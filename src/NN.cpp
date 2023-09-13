@@ -1,6 +1,7 @@
 
 #include <cstdlib>
 #include <random>
+#include <omp.h>
 
 // TODO valarray?
 std::vector<double> operator-(
@@ -180,6 +181,8 @@ unsigned int NeuralNetwork::compute(const Example& e) {
 // TODO parallelize (now its really easy to valarray)
 std::vector<double> NeuralNetwork::sigmoid(const std::vector<double>& x) {
     std::vector<double> result(x.size());
+
+    #pragma omp parralel for
     for (unsigned int i = 0; i < x.size(); i++)
         result[i] = 1 / (1 + exp(-x[i]));
     return result;
