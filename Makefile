@@ -6,11 +6,14 @@ FLAGS = $(WARNINGS) -std=c++11
 
 SRC = src/main.cpp
 
-all: 
+sigmoid:
 	g++ $(FLAGS) -Ofast $(SRC) -I include -o main
-	./main
+
+hyper_tan:
+	g++ $(FLAGS) -DHYPER_TAN -Ofast $(SRC) -I include -o main
+
+all: sigmoid
 
 debug:
 	g++ $(FLAGS) -DDEBUG $(SRC) -o main
-	./main
 
