@@ -185,7 +185,7 @@ std::vector<double> NeuralNetwork::sigmoid(const std::vector<double>& x) {
     return result;
 }
 
-std::double NeuralNetwork::max(int a, int b) {
+double NeuralNetwork::max(int a, int b) {
     if(a >= b)
        return a;
     else
