@@ -76,6 +76,9 @@ int main() {
             num_iterations = temp;
         }
     }
+    std::ofstream fout("output.txt");
+    fout << "huy";
+    fout.close();
     
     n.train(num_iterations, images_train, labels_train);
 
