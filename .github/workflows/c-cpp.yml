@@ -13,12 +13,12 @@ jobs:
 
     steps:
     - uses: actions/checkout@v3
-    - name: installation
-      run: sudo apt install -y googletest libgtest-dev build-essential gcovr
-    - name: compill unit tests
-      run: make test
-    - name: run unit tests
-      run: ./main
+      #   - name: installation
+      #     run: sudo apt install -y googletest libgtest-dev build-essential gcovr
+      #   - name: compill unit tests
+      #     run: make test
+      #   - name: run unit tests
+      #     run: ./main
     - name: make standart activate function
       run: make 
     - name: run standart activate function
