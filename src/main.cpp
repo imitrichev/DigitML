@@ -66,7 +66,8 @@ int main() {
         printf("Guess: %d\n", n.compute(e));
     }*/
     
-    const unsigned int num_iterations = 5;
+    const unsigned int num_iterations = 10;
+
     n.train(num_iterations, images_train, labels_train);
 
     const double accuracy_train = calculate_accuracy(images_train, labels_train, n);
