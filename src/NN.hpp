@@ -16,7 +16,7 @@ class NeuralNetwork {
                        weights2 = Matrix<double>(OUTPUT_SIZE, HIDDEN_SIZE);
 
         std::vector<double> sigmoid(const std::vector<double>& x);
-	double max(int a, int b);
+	double max(double a, double b);
 	std::vector<double> LeakyReLU(const std::vector<double>& x);
         std::vector<double> sigmoid_prime(const std::vector<double>& x);
 
