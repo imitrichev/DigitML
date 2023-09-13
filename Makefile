@@ -13,7 +13,7 @@ hyper_tan:
 	g++ $(FLAGS) -DHYPER_TAN -Ofast $(SRC) -I include -o main
 
 test:
-	g++ $(FLAGS) -I/usr/include/gtest -lgtest -DTEST -Ofast $(SRC) -I include -o main
+	g++ $(FLAGS) -pthread -I/usr/include/gtest -L/usr/lib/x86_64-linux-gnu -lgtest -lpthread -DTEST -Ofast $(SRC) -I include -o main
 
 
 all: sigmoid
