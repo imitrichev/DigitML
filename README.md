@@ -8,4 +8,4 @@ Training a feed-forward neural network with gradient descent and back-propogatio
 * [15 Steps to Implement a Neural Net](http://code-spot.co.za/2009/10/08/15-steps-to-implemented-a-neural-net) - Implementation details
 * [3Blue1Brown's videos on this topic](https://www.youtube.com/watch?v=aircAruvnKk) - Overview of important concepts
 
-Timofeev KS_40
+Timofeev KS_40, number 16
