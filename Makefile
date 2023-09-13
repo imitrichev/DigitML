@@ -1,4 +1,4 @@
-:WARNINGS = -pedantic -Wall -Wextra -Wcast-align -Wcast-qual -Wformat=2\
+WARNINGS = -pedantic -Wall -Wextra -Wcast-align -Wcast-qual -Wformat=2\
  -Winit-self -Wmissing-declarations -Wredundant-decls -Wshadow\
  -Wstrict-overflow=5 -Wswitch-default -Wundef
 
@@ -13,7 +13,7 @@ hyper_tan:
 	g++ $(FLAGS) -DHYPER_TAN -Ofast $(SRC) -I include -o main
 
 test:
-	g++ $(FLAGS) -lgtest -DTEST -Ofast $(SRC) -I include -o main
+	g++ $(FLAGS) -I/usr/include/gtest -lgtest -DTEST -Ofast $(SRC) -I include -o main
 
 
 all: sigmoid
