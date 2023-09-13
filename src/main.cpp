@@ -67,11 +67,15 @@ int main() {
         printf("Guess: %d\n", n.compute(e));
     }*/
 
-    std::ifstream fin("input.txt");
-
-    int num_iterations;
-
-    fin >> num_iterations;
+    std::ifstream fin("input.txt"); // окрываем файл для чтения
+    unsigned int num_iterations = 0;
+    if (fin.is_open()) {
+        unsigned int temp;
+        while (fin >> temp)
+        {
+            num_iterations = temp;
+        }
+    }
     
     n.train(num_iterations, images_train, labels_train);
 
