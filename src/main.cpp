@@ -66,7 +66,9 @@ int main() {
         printf("Guess: %d\n", n.compute(e));
     }*/
     
-    unsigned int num_iterations = 0
+    unsigned int num_iterations = 0;
+
+    std::cout << "Enter number of iterations";
          
     std::cin >> num_iterations;
 
