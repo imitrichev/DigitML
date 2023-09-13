@@ -193,3 +193,12 @@ std::vector<double> NeuralNetwork::sigmoid_prime(const std::vector<double>& x) {
     }
     return result;
 }
+
+double prelu(double alpha, double x) {
+    if (x >= 0) {
+        return x;
+    }
+    else {
+        return alpha * x;
+    }
+}
