@@ -188,6 +188,20 @@ std::vector<double> NeuralNetwork::sigmoid(const std::vector<double>& x) {
     return result;
 }
 
+std::vector<double> NeuralNetwork::selu(const std::vector<double>& x) {
+    std::vector<double> result(x.size());
+    float a = 1.67326;
+    float lmd = 1.0507;
+    for (unsigned int i = 0; i < x.size(); i++)
+        if (x < 0) {
+            result[i] = a * x;
+        }
+        else {
+            result[i] = x;
+        }
+    return result;
+}
+
 std::vector<double> NeuralNetwork::sigmoid_prime(const std::vector<double>& x) {
     std::vector<double> result(x.size());
     for (unsigned int i = 0; i < result.size(); i++) {
