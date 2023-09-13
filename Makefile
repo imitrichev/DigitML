@@ -2,7 +2,7 @@
  -Winit-self -Wmissing-declarations -Wredundant-decls -Wshadow\
  -Wstrict-overflow=5 -Wswitch-default -Wundef
 
-FLAGS = $(WARNINGS) -std=c++11
+FLAGS = $(WARNINGS) -std=c++17 
 
 SRC = src/main.cpp
 
@@ -12,7 +12,12 @@ sigmoid:
 hyper_tan:
 	g++ $(FLAGS) -DHYPER_TAN -Ofast $(SRC) -I include -o main
 
+test:
+	g++ $(FLAGS) -lgtest -DTEST -Ofast $(SRC) -I include -o main
+
+
 all: sigmoid
+
 
 debug:
 	g++ $(FLAGS) -DDEBUG $(SRC) -o main
