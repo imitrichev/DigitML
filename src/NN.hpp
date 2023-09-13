@@ -10,14 +10,15 @@
 #include "dataset.hpp"
 #include <cmath>
 
+double sigmoid(double);
+
+
 class NeuralNetwork {
     private:
         Matrix<double> weights1 = Matrix<double>(HIDDEN_SIZE, INPUT_SIZE),
                        weights2 = Matrix<double>(OUTPUT_SIZE, HIDDEN_SIZE);
 
-        std::vector<double> sigmoid(const std::vector<double>& x);
-        std::vector<double> hyper_tan(const std::vector<double>& x);
-        std::vector<double> sigmoid_prime(const std::vector<double>& x);
+        std::vector<double> activation_func(const std::vector<double>& x);
 
 		Matrix<double> weight_init(double max_weight, unsigned int width, unsigned int height);
 
@@ -25,8 +26,10 @@ class NeuralNetwork {
                 const std::vector<double>& input,
                 const Matrix<double>& weights);
 
+        double (*act_func)(double);
+
     public:
-        NeuralNetwork();
+        NeuralNetwork(double (*f)(double)=sigmoid);
         NeuralNetwork(const NeuralNetwork& rhs) = default;
         virtual ~NeuralNetwork() = default;
 
@@ -41,6 +44,7 @@ class NeuralNetwork {
                 Matrix<double>& gradient_2,
                 double& cost);
         unsigned int compute(const Example& e);
+
 };
 
 #include "NN.cpp"

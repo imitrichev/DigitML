@@ -36,6 +36,10 @@ const double calculate_accuracy(const Matrix<unsigned char>& images, const Matri
 }
 
 int main() {
+double hyper_tan(double a)
+{
+        return tanh(a);
+}
     Matrix<unsigned char> images_train(0, 0);
     Matrix<unsigned char> labels_train(0, 0);
     load_dataset(images_train, labels_train, "data/train-images-idx3-ubyte", "data/train-labels-idx1-ubyte");
@@ -44,7 +48,11 @@ int main() {
     Matrix<unsigned char> labels_test(0, 0);
     load_dataset(images_test, labels_test, "data/t10k-images-idx3-ubyte", "data/t10k-labels-idx1-ubyte");
 
+#ifdef HYPER_TAN 
+    NeuralNetwork n(hyper_tan);
+#else
     NeuralNetwork n;
+#endif
 
     // Tests to see that data was read in properly
     /*for (int i = 0; i < 10; ++i) {
