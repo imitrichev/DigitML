@@ -71,7 +71,7 @@ int main() {
 
     unsigned int num_iterations = 0;
 
-    std::fin >> num_iterations;
+    fin >> num_iterations;
     
     n.train(num_iterations, images_train, labels_train);
 
