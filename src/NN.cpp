@@ -19,13 +19,22 @@ NeuralNetwork::NeuralNetwork() {
     weights2 = weight_init(2.0, OUTPUT_SIZE, HIDDEN_SIZE + 1);
 }
 
+class HS {
+private:
+    const double alpha;
+public:
+    HS(const double a) : alpha(alpha) {}
+
+    const double get_alpha() { return this->alpha; }
+};
+
 // Performs one training iteration using the data in images and labels
 void NeuralNetwork::train(
         const unsigned int iterations,
         const Matrix<unsigned char>& images,
         const Matrix<unsigned char>& labels) {
     // The learning rate
-    const double alpha = 1.5;
+    const double alpha = HS(1.5).get_alpha();
 
     for (unsigned int i = 0; i < iterations; ++i) {
       // Initialize the gradient matrices to 0
