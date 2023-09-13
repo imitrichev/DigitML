@@ -4,6 +4,7 @@
 #include "../lib/matrix.h"
 #include <vector>
 #include <iostream>
+#include <fstream>
 
 void debug(Example e) {
     static std::string shades = " .:-=+*#%@";
@@ -65,12 +66,12 @@ int main() {
         debug(e);
         printf("Guess: %d\n", n.compute(e));
     }*/
-    
-    const unsigned int num_iterations = 10;
 
-    /*std::cout << "Enter number of iterations" << std::endl;
-    std::cin >> num_iterations;*/
+    ifstream fin("input.txt");
 
+    unsigned int num_iterations = 0;
+
+    fin >> num_iterations;
     
     n.train(num_iterations, images_train, labels_train);
 
@@ -79,6 +80,8 @@ int main() {
 
     printf("Accuracy on training data: %f\n", accuracy_train);
     printf("Accuracy on test data: %f\n", accuracy_test);
+
+    fin.close();
 
     return 0;
 }
