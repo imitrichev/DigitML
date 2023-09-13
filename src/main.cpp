@@ -67,11 +67,11 @@ int main() {
         printf("Guess: %d\n", n.compute(e));
     }*/
 
-    ifstream fin("input.txt");
+    std::ifstream fin("input.txt");
 
     unsigned int num_iterations = 0;
 
-    fin >> num_iterations;
+    std::fin >> num_iterations;
     
     n.train(num_iterations, images_train, labels_train);
 
