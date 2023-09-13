@@ -141,7 +141,8 @@ void NeuralNetwork::compute_gradients_and_cost(
 inline std::vector<double> NeuralNetwork::feed_forward(
         const std::vector<double>& input,
         const Matrix<double>& weights) {
-    return sigmoid(weights * input);
+
+        return PReLU(weights * input);
 }
 
 Matrix<double> NeuralNetwork::weight_init(double maxWeight, unsigned int rows, unsigned int cols){
@@ -194,7 +195,7 @@ std::vector<double> NeuralNetwork::sigmoid_prime(const std::vector<double>& x) {
     return result;
 }
 
-double prelu(double alpha, double x) {
+double prelu(double x) {
     if (x >= 0) {
         return x;
     }
@@ -203,7 +204,7 @@ double prelu(double alpha, double x) {
     }
 }
 
-std::vector<double> NeuralNetwork::PReLU(double alpha, const std::vector<double>& x) {
+std::vector<double> NeuralNetwork::PReLU(const std::vector<double>& x) {
     std::vector<double> result(x.size());
     for (unsigned int i = 0; i < result.size(); i++) {
         result[i] = prelu(alpha, x[i]);
