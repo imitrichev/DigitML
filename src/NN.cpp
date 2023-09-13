@@ -183,7 +183,7 @@ std::vector<double> NeuralNetwork::sigmoid(const std::vector<double>& x) {
     int a = 1.5;
     for (unsigned int i = 0; i < x.size(); i++)
         if (x[i] < 0) {
-            result[i] = a*x[i];
+            result[i] = a * x[i];
         }
         else {
             result[i] = x[i];
