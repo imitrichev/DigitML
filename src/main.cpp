@@ -69,7 +69,7 @@ int main() {
 
     std::ifstream fin("input.txt");
 
-    unsigned int num_iterations = 0;
+    int num_iterations;
 
     fin >> num_iterations;
     
