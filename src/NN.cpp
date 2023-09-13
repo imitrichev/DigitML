@@ -141,7 +141,7 @@ void NeuralNetwork::compute_gradients_and_cost(
 inline std::vector<double> NeuralNetwork::feed_forward(
         const std::vector<double>& input,
         const Matrix<double>& weights) {
-    return sigmoid(weights * input);
+    return ReLU(weights * input);
 }
 
 Matrix<double> NeuralNetwork::weight_init(double maxWeight, unsigned int rows, unsigned int cols){
@@ -185,7 +185,7 @@ std::vector<double> NeuralNetwork::sigmoid(const std::vector<double>& x) {
     return result;
 }
 
-std::double max(int a, int b) {
+double max(int a, int b) {
     if (a >= b)
         return a;
     else
