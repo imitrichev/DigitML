@@ -68,6 +68,7 @@ int main() {
     
     unsigned int num_iterations = 0;
 
+    std::cout << "Enter number of iterations" << std::endl;
     std::cin >> num_iterations;
     
     n.train(num_iterations, images_train, labels_train);
