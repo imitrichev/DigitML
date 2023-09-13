@@ -192,6 +192,7 @@ std::double max(int a, int b) {
         return b;
 }
 
+
 // TODO parallelize (now its really easy to valarray)
 std::vector<double> NeuralNetwork::ReLU(const std::vector<double>& x) {
     std::vector<double> result(x.size());
