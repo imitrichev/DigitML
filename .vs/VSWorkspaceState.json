@@ -1,8 +1,9 @@
 {
   "ExpandedNodes": [
     "",
+    "\\lib",
     "\\src"
   ],
-  "SelectedNode": "\\src\\dataset.cpp",
+  "SelectedNode": "\\lib\\matrix.cpp",
   "PreviewInSolutionExplorer": false
 }

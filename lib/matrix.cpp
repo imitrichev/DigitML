@@ -96,7 +96,7 @@ Matrix<T>& Matrix<T>::operator+=(const Matrix<T>& rhs) {
         warn("Matrix::operator+", "Inconsistent number of rows");
     if (m_cols != rhs.m_cols)
         warn("Matrix::operator+", "Inconsistent number of cols");
-
+    
     for (unsigned int i = 0; i < m_rows; i++)
         for (unsigned int j = 0; j < m_cols; j++)
             m_data[i][j] += rhs[i][j];
@@ -112,7 +112,7 @@ Matrix<T> Matrix<T>::operator-(const Matrix<T>& rhs) const {
         warn("Matrix::operator-", "Inconsistent number of cols");
 
     Matrix<T> result(m_rows, m_cols);
-
+   
     for (unsigned int i = 0; i < m_rows; i++)
         for (unsigned int j = 0; j < m_cols; j++)
             result[i][j] = m_data[i][j] - rhs[i][j];
@@ -165,6 +165,7 @@ Matrix<T>& Matrix<T>::operator*=(const Matrix<T>& rhs) {
 template<typename T>
 Matrix<T> Matrix<T>::transpose() const {
     Matrix<T> result(m_cols, m_rows);
+
     for (int i = 0; i < m_cols; i++) {
         for (int j = 0; j < m_rows; j++) {
             result[i][j] = m_data[j][i];
@@ -178,6 +179,7 @@ Matrix<T> Matrix<T>::transpose() const {
 template<typename T> \
 Matrix<T> Matrix<T>::operator op (const T& rhs) const { \
     Matrix<T> result(m_rows, m_cols); \
+
     for (int i = 0; i < m_rows; i++) \
         for (int j = 0; j < m_cols; j++) \
             result[i][j] = m_data[i][j] op rhs; \
@@ -197,6 +199,7 @@ Matrix<T> Matrix<T>::hadamard(const Matrix<T>& rhs) const {
         warn("Matrix::hadamard", "Number of cols don't match up");
 
     Matrix<T> result(m_rows, m_cols);
+
     for (unsigned int i = 0; i < m_rows; i++)
         for (unsigned int j = 0; j < m_cols; j++)
             result[i][j] = m_data[i][j] * rhs[i][j];
