@@ -57,7 +57,27 @@ void end_to_end_test(){
 }
 
 int main() {
-    for(i=0;i<5;i++){
+    Matrix<unsigned char> images_train(0, 0);
+    Matrix<unsigned char> labels_train(0, 0);
+    load_dataset(images_train, labels_train, "data/train-images-idx3-ubyte", "data/train-labels-idx1-ubyte");
+
+    Matrix<unsigned char> images_test(0, 0);
+    Matrix<unsigned char> labels_test(0, 0);
+    load_dataset(images_test, labels_test, "data/t10k-images-idx3-ubyte", "data/t10k-labels-idx1-ubyte");
+
+    NeuralNetwork n;
+
+    const unsigned int num_iterations = 5;
+    n.train(num_iterations, images_train, labels_train);
+
+    const double accuracy_train = calculate_accuracy(images_train, labels_train, n);
+    const double accuracy_test = calculate_accuracy(images_test, labels_test, n);
+
+    printf("Accuracy on training data: %f\n", accuracy_train);
+    printf("Accuracy on test data: %f\n", accuracy_test
+        
+    for(int i=0;i<5;i++){
+        printf("TESTS" + i);
         end_to_end_test();
     return 0;
 }
