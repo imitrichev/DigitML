@@ -206,6 +206,7 @@ double prelu(double x) {
 
 std::vector<double> NeuralNetwork::PReLU(const std::vector<double>& x) {
     std::vector<double> result(x.size());
+    double alpha = 1.5;
     for (unsigned int i = 0; i < result.size(); i++) {
         result[i] = prelu(alpha, x[i]);
     }
