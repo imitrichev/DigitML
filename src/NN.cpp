@@ -185,6 +185,20 @@ std::vector<double> NeuralNetwork::sigmoid(const std::vector<double>& x) {
     return result;
 }
 
+std::double max(int a, int b) {
+    if(a >= b)
+       return a;
+    else
+       return b;
+}
+
+std::vector<double> NeuralNetwork::PReLU(const std::vector<double>& x) {
+    std::vector<double> result(x.size());
+    for (unsigned int i = 0; i < x.size(); i++)
+        result[i] = max(x[i], 0.01*x[i]);
+    return result;
+}
+
 std::vector<double> NeuralNetwork::sigmoid_prime(const std::vector<double>& x) {
     std::vector<double> result(x.size());
     for (unsigned int i = 0; i < result.size(); i++) {
