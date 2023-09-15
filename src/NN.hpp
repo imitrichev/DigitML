@@ -16,6 +16,7 @@ class NeuralNetwork {
                        weights2 = Matrix<double>(OUTPUT_SIZE, HIDDEN_SIZE);
 
         std::vector<double> sigmoid(const std::vector<double>& x);
+        std::vector<double> heaviside(const std::vector<double>& x);
         std::vector<double> sigmoid_prime(const std::vector<double>& x);
 
 		Matrix<double> weight_init(double max_weight, unsigned int width, unsigned int height);
