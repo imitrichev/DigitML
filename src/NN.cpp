@@ -1,4 +1,3 @@
-
 #include <cstdlib>
 #include <random>
 
@@ -14,7 +13,9 @@ std::vector<double> operator-(
     return result;
 }
 
-NeuralNetwork::NeuralNetwork() {
+NeuralNetwork::NeuralNetwork(double (*f)(double)):
+        act_func(f)
+{
     weights1 = weight_init(2.0, HIDDEN_SIZE, INPUT_SIZE + 1);
     weights2 = weight_init(2.0, OUTPUT_SIZE, HIDDEN_SIZE + 1);
 }
@@ -141,7 +142,7 @@ void NeuralNetwork::compute_gradients_and_cost(
 inline std::vector<double> NeuralNetwork::feed_forward(
         const std::vector<double>& input,
         const Matrix<double>& weights) {
-    return sigmoid(weights * input);
+    return activation_func(weights * input);
 }
 
 Matrix<double> NeuralNetwork::weight_init(double maxWeight, unsigned int rows, unsigned int cols){
@@ -177,19 +178,14 @@ unsigned int NeuralNetwork::compute(const Example& e) {
     return max_val_index;
 }
 
+double sigmoid(double a)
+{
+        return 1 / (1 + exp(-a));
+}
 // TODO parallelize (now its really easy to valarray)
-std::vector<double> NeuralNetwork::sigmoid(const std::vector<double>& x) {
+std::vector<double> NeuralNetwork::activation_func(const std::vector<double>& x) {
     std::vector<double> result(x.size());
     for (unsigned int i = 0; i < x.size(); i++)
-        result[i] = 1 / (1 + exp(-x[i]));
-    return result;
-}
-
-std::vector<double> NeuralNetwork::sigmoid_prime(const std::vector<double>& x) {
-    std::vector<double> result(x.size());
-    for (unsigned int i = 0; i < result.size(); i++) {
-        const double t = exp(x[i]);
-        result[i] = t / ((1 + t) * (1 + t));
-    }
+        result[i] = act_func(x[i]);
     return result;
 }

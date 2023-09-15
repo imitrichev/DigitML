@@ -35,7 +35,40 @@ const double calculate_accuracy(const Matrix<unsigned char>& images, const Matri
   return accuracy;
 }
 
-int main() {
+
+
+double hyper_tan(double a)
+{
+        return tanh(a);
+}
+
+
+#ifdef TEST
+#include "gtest/gtest.h"
+
+TEST(FunctionTesting, test_hyper_tan_1) {
+  EXPECT_NEAR(hyper_tan(0),0.0,1e-6);
+}
+TEST(FunctionTesting, test_hyper_tan_2) {
+  EXPECT_NEAR(hyper_tan(1),0.76159416,1e-6);
+}
+TEST(FunctionTesting, test_hyper_tan_3) {
+  EXPECT_NEAR(hyper_tan(2),0.96402758,1e-6);
+}
+TEST(FunctionTesting, test_hyper_tan_4) {
+  EXPECT_NEAR(hyper_tan(3),0.99505475,1e-6);
+}
+TEST(FunctionTesting, test_hyper_tan_5) {
+  EXPECT_NEAR(hyper_tan(4),0.99932930,1e-6);
+}
+
+#endif
+
+int main(int argc, char **argv) {
+#ifdef TEST
+   ::testing::InitGoogleTest(&argc, argv);
+   return RUN_ALL_TESTS();
+#endif
     Matrix<unsigned char> images_train(0, 0);
     Matrix<unsigned char> labels_train(0, 0);
     load_dataset(images_train, labels_train, "data/train-images-idx3-ubyte", "data/train-labels-idx1-ubyte");
@@ -44,7 +77,11 @@ int main() {
     Matrix<unsigned char> labels_test(0, 0);
     load_dataset(images_test, labels_test, "data/t10k-images-idx3-ubyte", "data/t10k-labels-idx1-ubyte");
 
+#ifdef HYPER_TAN 
+    NeuralNetwork n(hyper_tan);
+#else
     NeuralNetwork n;
+#endif
 
     // Tests to see that data was read in properly
     /*for (int i = 0; i < 10; ++i) {
