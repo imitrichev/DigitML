@@ -46,11 +46,19 @@ double hyper_tan(double a)
 #ifdef TEST
 #include "gtest/gtest.h"
 
-TEST(FunctionTesting, test_hyper_tan) {
+TEST(FunctionTesting, test_hyper_tan_1) {
   EXPECT_NEAR(hyper_tan(0),0.0,1e-6);
+}
+TEST(FunctionTesting, test_hyper_tan_2) {
   EXPECT_NEAR(hyper_tan(1),0.76159416,1e-6);
+}
+TEST(FunctionTesting, test_hyper_tan_3) {
   EXPECT_NEAR(hyper_tan(2),0.96402758,1e-6);
+}
+TEST(FunctionTesting, test_hyper_tan_4) {
   EXPECT_NEAR(hyper_tan(3),0.99505475,1e-6);
+}
+TEST(FunctionTesting, test_hyper_tan_5) {
   EXPECT_NEAR(hyper_tan(4),0.99932930,1e-6);
 }
 
