@@ -1,0 +1,31 @@
+name: C/C++ CI
+
+on:
+  push:
+    branches: [ "heaviside_activation_function" ]
+  pull_request:
+    branches: [ "heaviside_activation_function" ]
+
+jobs:
+  build:
+
+    runs-on: ubuntu-latest
+
+    steps:
+    #- name: Install gtest manually
+    #  run: sudo apt-get install libgtest-dev && cd /usr/src/gtest && sudo cmake CMakeLists.txt && sudo make && sudo cp lib/*.a /usr/lib && sudo ln -s /usr/lib/libgtest.a /usr/local/lib/libgtest.a && sudo ln -s /usr/lib/libgtest_main.a /usr/local/lib/libgtest_main.a
+    - uses: actions/checkout@v3
+    - name: installation
+      run: sudo apt install -y googletest libgtest-dev build-essential gcovr
+    - name: compill unit tests
+      run: make test
+    - name: run unit tests
+      run: ./main
+    - name: make standart activate function
+      run: make 
+    - name: run standart activate function
+      run: ./main
+    - name: make heaviside activate function
+      run: make heaviside
+    - name: run heaviside activate function
+      run: ./main
