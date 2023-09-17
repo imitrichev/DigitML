@@ -1,3 +1,4 @@
+Карина Гималова КС40
 # DigitML
 
 Training a feed-forward neural network with gradient descent and back-propogation to recognize handwritten digits. 
