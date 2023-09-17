@@ -41,6 +41,7 @@ class NeuralNetwork {
                 Matrix<double>& gradient_2,
                 double& cost);
         unsigned int compute(const Example& e);
+        double get_alpha(void);
 };
 
 #include "NN.cpp"

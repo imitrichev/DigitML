@@ -193,3 +193,7 @@ std::vector<double> NeuralNetwork::sigmoid_prime(const std::vector<double>& x) {
     }
     return result;
 }
+double NeuralNetwork::get_alpha(void)
+{
+        return alpha;
+}
