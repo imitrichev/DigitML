@@ -23,9 +23,10 @@ class NeuralNetwork {
         std::vector<double> feed_forward(
                 const std::vector<double>& input,
                 const Matrix<double>& weights);
+        const double alpha;
 
     public:
-        NeuralNetwork();
+        NeuralNetwork(const double a=1.5);
         NeuralNetwork(const NeuralNetwork& rhs) = default;
         virtual ~NeuralNetwork() = default;
 

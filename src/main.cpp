@@ -44,7 +44,7 @@ int main() {
     Matrix<unsigned char> labels_test(0, 0);
     load_dataset(images_test, labels_test, "data/t10k-images-idx3-ubyte", "data/t10k-labels-idx1-ubyte");
 
-    NeuralNetwork n;
+    NeuralNetwork n(2.0);
 
     // Tests to see that data was read in properly
     /*for (int i = 0; i < 10; ++i) {
