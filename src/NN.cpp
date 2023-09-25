@@ -1,7 +1,6 @@
 #include "gtest/gtest.h"
 #include <cstdlib>
 #include <random>
-#include <cassert>
 
 // TODO valarray?
 std::vector<double> operator-(

@@ -1,9 +1,7 @@
-#include "dataset.hpp"
-#include "NN.hpp"
-#include "../lib/matrix.h"
 #include <vector>
 #include <iostream>
 #include "gtest/gtest.h"
+#include <NN.cpp>
 
 
 TEST(FunctionTesting, sigmoid_test) {
