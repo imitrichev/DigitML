@@ -5,9 +5,9 @@
 #include <vector>
 #include <iostream>
 
-double personal_sigmoid(double x) {
+/*double personal_sigmoid(double x) {
     return (sqrt(pow(x, 2) + 1) - 1) / 2 + x;
-}
+}*/
 
 void debug(Example e) {
     static std::string shades = " .:-=+*#%@";
@@ -45,19 +45,21 @@ const double calculate_accuracy(const Matrix<unsigned char>& images, const Matri
 NeuralNetwork n;
 
 TEST(FunctionTesting, test_personal_sigmoid) {  
-  EXPECT_NEAR(personal_sigmoid(0), 0, 1e-4);
+  EXPECT_NEAR(n.personal_sigmoid(0), 0, 1e-4);
 }
 
 TEST(FunctionTesting, test_sigmoid_incr) {  
-  EXPECT_GT(personal_sigmoid(10), 0);
+    std::vector<double> t1 = {-10, 0, 10};
+    std::vector<double> t2 = {-5.4750621894395549, 0, 14.5249378105604451};
+    EXPECT_EQ(n.personal_sigmoid(t1), t2);
 }
 
 TEST(FunctionTesting, test_sigmoid_decr) {  
-  EXPECT_LT(personal_sigmoid(-10), 0);
+  EXPECT_LT(n.personal_sigmoid(-10), 0);
 }
 
 TEST(FunctionTesting, test_sigmoid_cond) {  
-  EXPECT_TRUE(personal_sigmoid(0)==0);
+  EXPECT_TRUE(n.personal_sigmoid(0)==0);
 }
 
 TEST(FunctionTesting, test_sigmoid_comp) {  
