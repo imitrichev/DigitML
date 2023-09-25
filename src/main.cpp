@@ -44,8 +44,9 @@ const double calculate_accuracy(const Matrix<unsigned char>& images, const Matri
 
 NeuralNetwork n;
 
-TEST(FunctionTesting, test_personal_sigmoid) {  
-  EXPECT_NEAR(n.personal_sigmoid(0), 0, 1e-4);
+TEST(FunctionTesting, test_personal_sigmoid) {
+  std::vector<double> t1 = {0};
+  EXPECT_NEAR(n.personal_sigmoid(t1), 0, 1e-4);
 }
 
 TEST(FunctionTesting, test_sigmoid_incr) {  
@@ -54,12 +55,14 @@ TEST(FunctionTesting, test_sigmoid_incr) {
     EXPECT_EQ(n.personal_sigmoid(t1), t2);
 }
 
-TEST(FunctionTesting, test_sigmoid_decr) {  
-  EXPECT_LT(n.personal_sigmoid(-10), 0);
+TEST(FunctionTesting, test_sigmoid_decr) {
+  std::vector<double> t1 = {-10};    
+  EXPECT_LT(n.personal_sigmoid(t1), 0);
 }
 
-TEST(FunctionTesting, test_sigmoid_cond) {  
-  EXPECT_TRUE(n.personal_sigmoid(0)==0);
+TEST(FunctionTesting, test_sigmoid_cond) {
+  std::vector<double> t1 = {0};    
+  EXPECT_TRUE(n.personal_sigmoid(t1)==0);
 }
 
 TEST(FunctionTesting, test_sigmoid_comp) {  
