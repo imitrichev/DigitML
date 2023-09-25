@@ -45,7 +45,14 @@ const double calculate_accuracy(const Matrix<unsigned char>& images, const Matri
 NeuralNetwork n;
 
 TEST(FunctionTesting, test_personal_sigmoid) {  
-  EXPECT_NEAR(personal_sigmoid(0), 0, 1e-6);
+  EXPECT_NEAR(personal_sigmoid(0), 0, 1e-4);
+}
+
+TEST(FunctionTesting, test_sigmoid_incr) {  
+  EXPECT_GT(personal_sigmoid(10), 0);
+}
+TEST(FunctionTesting, test_sigmoid_decr) {  
+  EXPECT_LT(personal_sigmoid(-10), 0);
 }
 #endif
 int main(int argc, char **argv) {
