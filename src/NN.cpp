@@ -141,11 +141,11 @@ void NeuralNetwork::compute_gradients_and_cost(
 inline std::vector<double> NeuralNetwork::feed_forward(
         const std::vector<double>& input,
         const Matrix<double>& weights) {
-        #ifdef PERS
-            return personal_sigmoid(weights * input);
-        #else 
-            return sigmoid(weights * input);
-        #endif
+    #ifdef PERS
+        return personal_sigmoid(weights * input);
+    #else 
+        return sigmoid(weights * input);
+    #endif
 }
 
 Matrix<double> NeuralNetwork::weight_init(double maxWeight, unsigned int rows, unsigned int cols){
@@ -197,11 +197,11 @@ std::vector<double> NeuralNetwork::personal_sigmoid(const std::vector<double>& x
         result[i] = (sqrt(pow(x[i], 2) + 1) - 1) / 2 + x[i];
     return result;
 }
-/*std::vector<double> NeuralNetwork::sigmoid_prime(const std::vector<double>& x) {
+std::vector<double> NeuralNetwork::sigmoid_prime(const std::vector<double>& x) {
     std::vector<double> result(x.size());
     for (unsigned int i = 0; i < result.size(); i++) {
         const double t = exp(x[i]);
         result[i] = t / ((1 + t) * (1 + t));
     }
     return result;
-}*/
+}
