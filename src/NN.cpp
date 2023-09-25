@@ -143,14 +143,14 @@ void NeuralNetwork::compute_gradients_and_cost(
 void NeuralNetWork::testPreluFunction() {
     double alpha = 0.01 * (rand() % 3);
     printf("alpha:" + alpha);
-    printf("Положительные");
+    printf("positive");
     for (size_t i = 0; i < 5; i++)
     {
         double x = 0.5 * (rand() % 10001);
         double result = prelu(x, alpha);
         printf(i + " " + result);
     }
-    printf("Отрицательные");
+    printf("negative");
     for (size_t i = 0; i < 5; i++)
     {
         double x = -0.5 * (rand() % 10001);
