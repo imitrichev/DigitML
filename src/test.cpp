@@ -1,5 +1,6 @@
 #include <vector>
 #include <iostream>
+#include <cmath>
 #include "gtest/gtest.h"
 
 std::vector<double> sigmoid(const std::vector<double>& x) {
