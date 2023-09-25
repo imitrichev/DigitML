@@ -9,15 +9,6 @@ double personal_sigmoid(double x) {
     return (sqrt(pow(x, 2) + 1) - 1) / 2 + x;
 }
 
-#ifdef TESTS
-#include <gtest/gtest.h>
-
-NeuralNetwork n;
-
-TEST(FunctionTesting, test_personal_sigmoid) {  
-  EXPECT_NEAR(personal_sigmoid(0), 0, 1e-6);
-}
-
 void debug(Example e) {
     static std::string shades = " .:-=+*#%@";
     for (unsigned int i = 0; i < 28 * 28; i++) {
@@ -46,6 +37,15 @@ const double calculate_accuracy(const Matrix<unsigned char>& images, const Matri
   const double accuracy = (double)correct/images.rows();
 
   return accuracy;
+}
+
+#ifdef TESTS
+#include <gtest/gtest.h>
+
+NeuralNetwork n;
+
+TEST(FunctionTesting, test_personal_sigmoid) {  
+  EXPECT_NEAR(personal_sigmoid(0), 0, 1e-6);
 }
 #endif
 int main(int argc, char **argv) {
