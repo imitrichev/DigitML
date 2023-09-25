@@ -46,11 +46,12 @@ const double calculate_accuracy(const Matrix<unsigned char>& images, const Matri
   return accuracy;
 }
 #endif
-int main() {
+int main(int argc, char **argv) {
     #ifdef TEST
         ::testing::InitGoogleTest(&argc, argv);
         return RUN_ALL_TESTS();
     #endif
+    
     Matrix<unsigned char> images_train(0, 0);
     Matrix<unsigned char> labels_train(0, 0);
     load_dataset(images_train, labels_train, "data/train-images-idx3-ubyte", "data/train-labels-idx1-ubyte");
