@@ -47,7 +47,7 @@ int main() {
     NeuralNetwork n;
 
     // Tests to see that data was read in properly
-    /*for (int i = 0; i < 10; ++i) {
+    for (int i = 0; i < 10; ++i) {
         Example e;
         for (int j = 0; j < 28*28; ++j) {
             e.data[j] = images_train[i][j];
@@ -64,7 +64,7 @@ int main() {
         e.label = labels_test[i][0];
         debug(e);
         printf("Guess: %d\n", n.compute(e));
-    }*/
+    }
     const unsigned int num_iterations = 5;
     n.train(num_iterations, images_train, labels_train);
 
