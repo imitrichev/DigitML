@@ -53,15 +53,15 @@ TEST(FunctionTesting, vectorize_label_test) {
 	std::vector<double> result1 = log(1);
 	std::vector<double> result2 = log(15);
 
-	for (size_t i = 0; i < testVector0.size(); i++) {
+	for (size_t i = 0; i < expectVector0.size(); i++) {
 		EXPECT_NEAR(result0[i], expectVector0[i], 1e-6);
 	}
 
-	for (size_t i = 0; i < testVector1.size(); i++) {
+	for (size_t i = 0; i < expectVector1.size(); i++) {
 		EXPECT_NEAR(result1[i], expectVector1[i], 1e-6);
 	}
 
-	for (size_t i = 0; i < testVector2.size(); i++) {
+	for (size_t i = 0; i < expectVector2.size(); i++) {
 		EXPECT_NEAR(result2[i], expectVector2[i], 1e-6);
 	}
 }
