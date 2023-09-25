@@ -46,7 +46,7 @@ NeuralNetwork n;
 
 TEST(FunctionTesting, test_personal_sigmoid) {
   std::vector<double> t1 = {0};
-  EXPECT_NEAR(n.personal_sigmoid(t1), 0, 1e-4);
+  EXPECT_NEAR(n.personal_sigmoid(t1), t1, 1e-4);
 }
 
 TEST(FunctionTesting, test_sigmoid_incr) {  
@@ -57,12 +57,13 @@ TEST(FunctionTesting, test_sigmoid_incr) {
 
 TEST(FunctionTesting, test_sigmoid_decr) {
   std::vector<double> t1 = {-10};    
-  EXPECT_LT(n.personal_sigmoid(t1), 0);
+  std::vector<double> r = {0};
+  EXPECT_LT(n.personal_sigmoid(t1), r);
 }
 
 TEST(FunctionTesting, test_sigmoid_cond) {
   std::vector<double> t1 = {0};    
-  EXPECT_TRUE(n.personal_sigmoid(t1)==0);
+  EXPECT_TRUE(n.personal_sigmoid(t1)==t1);
 }
 
 TEST(FunctionTesting, test_sigmoid_comp) {  
