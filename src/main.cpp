@@ -12,6 +12,8 @@ double personal_sigmoid(double x) {
 #ifdef TESTS
 #include <gtest/gtest.h>
 
+NeuralNetwork n;
+
 TEST(FunctionTesting, test_personal_sigmoid) {  
   EXPECT_NEAR(personal_sigmoid(0), 0, 1e-6);
 }
