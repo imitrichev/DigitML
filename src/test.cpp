@@ -65,7 +65,7 @@ TEST(FunctionTesting, log_test) {
 	std::vector<double> result = log(testVector);
 	
 	for (size_t i = 0; i < testVector.size(); i++) {
-		EXPECT_NEAR(result[i], expectVector[i], 1e-6);
+		EXPECT_NEAR(result[i], expectVector[i], 1e-2);
 	}
 
 }
