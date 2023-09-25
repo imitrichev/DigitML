@@ -3,5 +3,6 @@ a.exe
 *.swo
 *.swn
 *~
+*.vs
 main
 main.exe
