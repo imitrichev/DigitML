@@ -33,9 +33,9 @@ TEST(FunctionTesting, NeuralNetwork::sigmoid_prime) {
 	std::vector<double> testVector3;
 	std::vector<double> expectVector3;
 
-	EXPECT_NEAR(NeuralNetwork::sigmoid_prime(0), 1.0, 1e-6);
+	EXPECT_NEAR(NeuralNetwork::sigmoid_prime(testVector1), expectVector1, 1e-6);
 
-	EXPECT_NEAR(NeuralNetwork::sigmoid_prime(1), 7.38905609893, 1e-6);
+	EXPECT_NEAR(NeuralNetwork::sigmoid_prime(testVector2), expectVector2, 1e-6);
 
 	EXPECT_NEAR(NeuralNetwork::sigmoid(testVector3), expectVector3, 1e-6);
 }
@@ -50,8 +50,10 @@ TEST(FunctionTesting, log) {
 	std::vector<double> testVector3;
 	std::vector<double> expectVector3;
 
-	EXPECT_NEAR(log(testVector1), expectVector1 1e-6);
+	EXPECT_NEAR(log(testVector1), expectVector1, 1e-6);
+
 	EXPECT_NEAR(log(testVector2), expectVector2, 1e-6);
+
 	EXPECT_NEAR(log(testVector3), expectVector3, 1e-6);
 }
 
