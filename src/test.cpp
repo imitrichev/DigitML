@@ -6,7 +6,7 @@
 #include "gtest/gtest.h"
 
 
-TEST(FunctionTesting, NeuralNetwork::sigmoid) {
+TEST(FunctionTesting, sigmoid_test) {
 	std::vector<double> testVector1{ 0.0, 1.0, 2.0, 3.0, 4.0, 5.0, 6.0, 7.0, 8.0, 9.0 };
 	std::vector<double> expectVector1{ 0.5, 0.731059, 0.880797, 0.952574, 0.982014, 0.993307, 0.997527, 0.999089, 0.999665, 0.999877 };
 
@@ -23,7 +23,7 @@ TEST(FunctionTesting, NeuralNetwork::sigmoid) {
 	EXPECT_NEAR(NeuralNetwork::sigmoid(testVector3), expectVector3, 1e-6);
 }
 
-TEST(FunctionTesting, NeuralNetwork::sigmoid_prime) {
+TEST(FunctionTesting, sigmoid_prime_test) {
 	std::vector<double> testVector1{ 0.0, 1.0, 2.0, 3.0, 4.0, 5.0, 6.0, 7.0, 8.0, 9.0 };
 	std::vector<double> expectVector1{ 0.25, 0.196612, 0.104994, 0.0451767, 0.0176627, 0.00664806, 0.00246651, 0.000910221, 0.000335238, 0.000123379 };
 
@@ -40,7 +40,7 @@ TEST(FunctionTesting, NeuralNetwork::sigmoid_prime) {
 	EXPECT_NEAR(NeuralNetwork::sigmoid(testVector3), expectVector3, 1e-6);
 }
 
-TEST(FunctionTesting, log) {
+TEST(FunctionTesting, log_test) {
 	std::vector<double> testVector1{ 1.0, 2.0, 3.0, 4.0, 5.0, 6.0, 7.0, 8.0, 9.0 };
 	std::vector<double> expectVector1{0, 0.693147, 1.09861, 1.38629, 1.609440, 1.79176, 1.94591, 2.07944, 2.19722  };
 
