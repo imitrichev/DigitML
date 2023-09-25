@@ -1,7 +1,6 @@
 #include <vector>
 #include <iostream>
 #include "gtest/gtest.h"
-#include <NN.cpp>
 
 
 TEST(FunctionTesting, sigmoid_test) {
