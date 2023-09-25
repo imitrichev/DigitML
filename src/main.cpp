@@ -5,6 +5,17 @@
 #include <vector>
 #include <iostream>
 
+double personal_sigmoid(double x) {
+    return (sqrt(pow(x, 2) + 1) - 1) / 2 + x;
+}
+
+#ifdef TESTS
+#include <gtest/gtest.h>
+
+TEST(FunctionTesting, test_personal_sigmoid) {  
+  EXPECT_NEAR(personal_sigmoid(0), 2.0495097567963924, 1e-6);
+}
+
 void debug(Example e) {
     static std::string shades = " .:-=+*#%@";
     for (unsigned int i = 0; i < 28 * 28; i++) {
@@ -34,7 +45,7 @@ const double calculate_accuracy(const Matrix<unsigned char>& images, const Matri
 
   return accuracy;
 }
-
+#endif
 int main() {
     Matrix<unsigned char> images_train(0, 0);
     Matrix<unsigned char> labels_train(0, 0);
