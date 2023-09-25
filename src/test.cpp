@@ -2,6 +2,36 @@
 #include <iostream>
 #include "gtest/gtest.h"
 
+std::vector<double> sigmoid(const std::vector<double>& x) {
+	std::vector<double> result(x.size());
+	for (unsigned int i = 0; i < x.size(); i++)
+		result[i] = 1 / (1 + exp(-x[i]));
+	return result;
+}
+
+std::vector<double> sigmoid_prime(const std::vector<double>& x) {
+	std::vector<double> result(x.size());
+	for (unsigned int i = 0; i < result.size(); i++) {
+		const double t = exp(x[i]);
+		result[i] = t / ((1 + t) * (1 + t));
+	}
+	return result;
+}
+
+std::vector<double> vectorize_label(unsigned char label) {
+	std::vector<double> result(10, 0.0);
+	result[(unsigned int)label] = 1.0;
+	return result;
+}
+
+std::vector<double> log(const std::vector<double>& vec) {
+	std::vector<double> result(vec.size());
+	for (unsigned int i = 0; i < result.size(); ++i) {
+		// Currently not checking for log(0) errors, but it seems fine
+		result[i] = log(vec[i]);
+	}
+	return result;
+}
 
 TEST(FunctionTesting, sigmoid_test) {
 
