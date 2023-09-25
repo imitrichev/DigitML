@@ -54,6 +54,9 @@ TEST(FunctionTesting, test_sigmoid_incr) {
 TEST(FunctionTesting, test_sigmoid_decr) {  
   EXPECT_LT(personal_sigmoid(-10), 0);
 }
+TEST(FunctionTesting, test_sigmoid_cond) {  
+  EXPECT_TRUE(personal_sigmoid(0)==0);
+}
 #endif
 int main(int argc, char **argv) {
     #ifdef TEST
