@@ -8,54 +8,50 @@
 
 
 TEST(FunctionTesting, sigmoid_test) {
-	std::vector<double> testVector1{ 0.0, 1.0, 2.0, 3.0, 4.0, 5.0, 6.0, 7.0, 8.0, 9.0 };
-	std::vector<double> expectVector1{ 0.5, 0.731059, 0.880797, 0.952574, 0.982014, 0.993307, 0.997527, 0.999089, 0.999665, 0.999877 };
 
-	std::vector<double> testVector2{ 3123123.0, 124534124.0, 0.0, 0.0, 123123.0 };
-	std::vector<double> expectVector2{ 1, 1, 0.5, 0.5, 1 };
+	EXPECT_NEAR(sigmoid(0.0), 0.5, 1e-6);
+	EXPECT_NEAR(sigmoid(1.0), 0.731059, 1e-6);
+	EXPECT_NEAR(sigmoid(2.0), 0.880797, 1e-6);
+	EXPECT_NEAR(sigmoid(3123123.0), 1, 1e-6);
+	EXPECT_NEAR(sigmoid(124534124.0), 1, 1e-6);
+	EXPECT_NEAR(sigmoid(5.0), 0.993307, 1e-6);
+	EXPECT_NEAR(sigmoid(nullptr), nullptr, 1e-6);
 
-	std::vector<double> testVector3;
-	std::vector<double> expectVector3;
-
-	EXPECT_NEAR(sigmoid(testVector1), expectVector1, 1e-6);
-
-	EXPECT_NEAR(sigmoid(testVector2), expectVector2, 1e-6);
-
-	EXPECT_NEAR(sigmoid(testVector3), expectVector3, 1e-6);
 }
 
 TEST(FunctionTesting, sigmoid_prime_test) {
-	std::vector<double> testVector1{ 0.0, 1.0, 2.0, 3.0, 4.0, 5.0, 6.0, 7.0, 8.0, 9.0 };
-	std::vector<double> expectVector1{ 0.25, 0.196612, 0.104994, 0.0451767, 0.0176627, 0.00664806, 0.00246651, 0.000910221, 0.000335238, 0.000123379 };
 
-	std::vector<double> testVector2{ 1.0, 100.0, 300.0, 2.0, 34.0 };
-	std::vector<double> expectVector2{ 0.196612, 3.72008e-44, 5.1482e-131, 0.104994, 1.71391e-15 };
+	EXPECT_NEAR(sigmoid_prime(0.0), 0.25, 1e-6);
+	EXPECT_NEAR(sigmoid_prime(1.0), 0.196612, 1e-6);
+	EXPECT_NEAR(sigmoid_prime(2.0), 0.104994, 1e-6);
+	EXPECT_NEAR(sigmoid_prime(3.0), 0.0451767, 1e-6);
+	EXPECT_NEAR(sigmoid_prime(4.0), 0.0176627, 1e-6);
+	EXPECT_NEAR(sigmoid_prime(5.0), 0.00664806, 1e-6);
+	EXPECT_NEAR(sigmoid_prime(6.0), 0.00246651, 1e-6);
+	EXPECT_NEAR(sigmoid_prime(7.0), 0.000910221, 1e-6);
+	EXPECT_NEAR(sigmoid_prime(8.0), 0.000335238, 1e-6);
+	EXPECT_NEAR(sigmoid_prime(9.0), 0.000123379, 1e-6);
+	EXPECT_NEAR(sigmoid_prime(100.0), 3.72008e-44, 1e-6);
+	EXPECT_NEAR(sigmoid_prime(34.0), 1.71391e-15, 1e-6);
 
-	std::vector<double> testVector3;
-	std::vector<double> expectVector3;
-
-	EXPECT_NEAR(sigmoid_prime(testVector1), expectVector1, 1e-6);
-
-	EXPECT_NEAR(sigmoid_prime(testVector2), expectVector2, 1e-6);
-
-	EXPECT_NEAR(sigmoid_prime(testVector3), expectVector3, 1e-6);
+	EXPECT_NEAR(sigmoid_prime(nullptr), nullptr, 1e-6);
 }
 
 TEST(FunctionTesting, log_test) {
-	std::vector<double> testVector1{ 1.0, 2.0, 3.0, 4.0, 5.0, 6.0, 7.0, 8.0, 9.0 };
-	std::vector<double> expectVector1{0, 0.693147, 1.09861, 1.38629, 1.609440, 1.79176, 1.94591, 2.07944, 2.19722  };
 
-	std::vector<double> testVector2{ 1.0, 100.0, 300.0, 2.0, 34.0 };
-	std::vector<double> expectVector2{ 0, 4.60517, 5.70378, 0.693147, 3.52636 };
+	EXPECT_NEAR(log(1.0), 0, 1e-6);
+	EXPECT_NEAR(log(2.0), 0.693147, 1e-6);
+	EXPECT_NEAR(log(3.0), 1.09861, 1e-6);
+	EXPECT_NEAR(log(4.0), 1.38629, 1e-6);
+	EXPECT_NEAR(log(5.0), 1.609440, 1e-6);
+	EXPECT_NEAR(log(6.0), 1.79176, 1e-6);
+	EXPECT_NEAR(log(7.0), 1.94591, 1e-6);
+	EXPECT_NEAR(log(8.0), 2.07944, 1e-6);
+	EXPECT_NEAR(log(9.0), 2.19722, 1e-6);
+	EXPECT_NEAR(log(100.0), 4.60517, 1e-6);
+	EXPECT_NEAR(log(300.0), 0.693147, 1e-6);
+	EXPECT_NEAR(log(nullptr), nullptr, 1e-6);
 
-	std::vector<double> testVector3;
-	std::vector<double> expectVector3;
-
-	EXPECT_NEAR(log(testVector1), expectVector1, 1e-6);
-
-	EXPECT_NEAR(log(testVector2), expectVector2, 1e-6);
-
-	EXPECT_NEAR(log(testVector3), expectVector3, 1e-6);
 }
 
 
