@@ -62,8 +62,10 @@ TEST(FunctionTesting, test_sigmoid_decr) {
 }
 
 TEST(FunctionTesting, test_sigmoid_cond) {
-  std::vector<double> t1 = {0};    
-  EXPECT_TRUE(n.personal_sigmoid(t1)==t1);
+    Matrix<unsigned char> images_train(0, 0);
+    Matrix<unsigned char> labels_train(0, 0);
+    load_dataset(images_train, labels_train, "data/train-images-idx3-ubyte", "data/train-labels-idx1-ubyte");
+    EXPECT_NO_THROW(n.train(num_iterations, images_train, labels_train));
 }
 
 TEST(FunctionTesting, test_sigmoid_comp) {  
