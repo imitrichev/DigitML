@@ -23,7 +23,7 @@ jobs:
       run: make 
     - name: run standart activate function
       run: ./main
-    - name: make arctg tangent activate function
-      run: make arctg
-    - name: run arctg tangent activate function
+    - name: make personal_sigmoid tangent activate function
+      run: make personal_sigmoid
+    - name: run personal_sigmoid tangent activate function
       run: ./main
