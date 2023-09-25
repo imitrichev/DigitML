@@ -3,7 +3,6 @@
 #include "../lib/matrix.h"
 #include <vector>
 #include <iostream>
-#include <cassert>
 #include "gtest/gtest.h"
 
 

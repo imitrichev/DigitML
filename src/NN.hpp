@@ -9,7 +9,6 @@
 #include "../lib/matrix.h"
 #include "dataset.hpp"
 #include <cmath>
-#include <cassert>
 
 class NeuralNetwork {
     private:
