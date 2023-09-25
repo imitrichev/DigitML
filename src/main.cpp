@@ -62,6 +62,7 @@ TEST(FunctionTesting, test_sigmoid_decr) {
 }
 
 TEST(FunctionTesting, test_sigmoid_cond) {
+    const unsigned int num_iterations = 5;
     Matrix<unsigned char> images_train(0, 0);
     Matrix<unsigned char> labels_train(0, 0);
     load_dataset(images_train, labels_train, "data/train-images-idx3-ubyte", "data/train-labels-idx1-ubyte");
