@@ -56,12 +56,15 @@ TEST(FunctionTesting, test_sigmoid_incr) {
 }
 
 TEST(FunctionTesting, test_sigmoid_decr) {
-  std::vector<double> t1 = {-10};    
-  std::vector<double> r = {0};
-  EXPECT_LT(n.personal_sigmoid(t1), r);
+    Matrix<unsigned char> images_test(0, 0);
+    Matrix<unsigned char> labels_test(0, 0);
+    load_dataset(images_test, labels_test, "data/t10k-images-idx3-ubyte", "data/t10k-labels-idx1-ubyte");
+    const unsigned int num_iterations = 5;
+    n.train(num_iterations, images_train, labels_train);
+    EXPECT_GT(calculate_accuracy(images_test, labels_test, n), 0.01);
 }
 
-TEST(FunctionTesting, test_sigmoid_cond) {
+TEST(FunctionTesting, test_throw) {
     const unsigned int num_iterations = 5;
     Matrix<unsigned char> images_train(0, 0);
     Matrix<unsigned char> labels_train(0, 0);
