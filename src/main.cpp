@@ -51,12 +51,20 @@ TEST(FunctionTesting, test_personal_sigmoid) {
 TEST(FunctionTesting, test_sigmoid_incr) {  
   EXPECT_GT(personal_sigmoid(10), 0);
 }
+
 TEST(FunctionTesting, test_sigmoid_decr) {  
   EXPECT_LT(personal_sigmoid(-10), 0);
 }
+
 TEST(FunctionTesting, test_sigmoid_cond) {  
   EXPECT_TRUE(personal_sigmoid(0)==0);
 }
+
+TEST(FunctionTesting, test_sigmoid_cond) {  
+  std::vector<double> t1 = {-10};
+  EXPECT_TRUE(n.sigmoid(t1)<n.personal_sigmoid(t1));
+}
+
 #endif
 int main(int argc, char **argv) {
     #ifdef TEST
