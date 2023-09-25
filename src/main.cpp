@@ -60,7 +60,6 @@ TEST(FunctionTesting, test_sigmoid_decr) {
     Matrix<unsigned char> labels_test(0, 0);
     load_dataset(images_test, labels_test, "data/t10k-images-idx3-ubyte", "data/t10k-labels-idx1-ubyte");
     const unsigned int num_iterations = 5;
-    n.train(num_iterations, images_train, labels_train);
     EXPECT_GT(calculate_accuracy(images_test, labels_test, n), 0.01);
 }
 
