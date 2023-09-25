@@ -4,6 +4,7 @@
 #include "../lib/matrix.h"
 #include <vector>
 #include <iostream>
+#include <ctime>
 
 void debug(Example e) {
     static std::string shades = " .:-=+*#%@";
@@ -56,6 +57,7 @@ void EndToEndTest() {
 }
 
 int main() {
+    srand(time(NULL));
     Matrix<unsigned char> images_train(0, 0);
     Matrix<unsigned char> labels_train(0, 0);
     load_dataset(images_train, labels_train, "data/train-images-idx3-ubyte", "data/train-labels-idx1-ubyte");
@@ -81,5 +83,11 @@ int main() {
         EndToEndTest();
     }
 
+    printf("PreLu function test");
+    for (int i = 0; i <= 5; i++) {
+        printf("Test ¹" + i);
+        n.testPreluFunction();
+    }
+    
     return 0;
 }

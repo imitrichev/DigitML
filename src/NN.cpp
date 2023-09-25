@@ -1,6 +1,7 @@
 
 #include <cstdlib>
 #include <random>
+#include <ctime>
 
 // TODO valarray?
 std::vector<double> operator-(
@@ -71,6 +72,7 @@ void NeuralNetwork::compute_gradients_and_cost(
     const double lambda = 1.0;
 
     for (unsigned int i = 0; i < m; ++i) {
+ 
         std::vector<double> first_layer(images[i].begin(), images[i].end());
         // The bias value
         first_layer.insert(first_layer.begin(), 1.0);
@@ -138,6 +140,25 @@ void NeuralNetwork::compute_gradients_and_cost(
     cost += lambda/(2*m) * regularizationCost;
 }
 
+void NeuralNetWork::testPreluFunction() {
+    double alpha = 0.01 * (rand() % 3);
+    printf("alpha:" + alpha);
+    printf("Положительные");
+    for (size_t i = 0; i < 5; i++)
+    {
+        double x = 0.5 * (rand() % 10001);
+        double result = prelu(x, alpha);
+        printf(i + " " + result);
+    }
+    printf("Отрицательные");
+    for (size_t i = 0; i < 5; i++)
+    {
+        double x = -0.5 * (rand() % 10001);
+        double result = prelu(x, alpha);
+        printf(i + " " + result);
+    }
+
+}
 inline std::vector<double> NeuralNetwork::feed_forward(
         const std::vector<double>& input,
         const Matrix<double>& weights) {
@@ -145,6 +166,13 @@ inline std::vector<double> NeuralNetwork::feed_forward(
         return PReLU(weights * input);
 }
 
+inline std::vector<double> NeuralNetwork::testing(
+    const std::vector<double>& input,
+    const Matrix<double>& weights,
+    double alpha) {
+
+    return PReLU(weights * input, alpha);
+}
 Matrix<double> NeuralNetwork::weight_init(double maxWeight, unsigned int rows, unsigned int cols){
     std::random_device rd;
     std::mt19937 e2(rd());
@@ -195,8 +223,8 @@ std::vector<double> NeuralNetwork::sigmoid_prime(const std::vector<double>& x) {
     return result;
 }
 
-double prelu(double x) {
-    double alpha = 1.2;
+double prelu(double x, double alpha = 1.2) {
+
     if (x >= 0) {
         return x;
     }
