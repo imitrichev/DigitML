@@ -62,7 +62,7 @@ TEST(FunctionTesting, test_sigmoid_cond) {
 
 TEST(FunctionTesting, test_sigmoid_comp) {  
   std::vector<double> t1 = {-10};
-  EXPECT_TRUE(n.sigmoid(t1)<n.personal_sigmoid(t1));
+  EXPECT_TRUE(n.sigmoid(t1)>n.personal_sigmoid(t1));
 }
 
 #endif
