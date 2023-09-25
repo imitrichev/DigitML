@@ -1,4 +1,4 @@
-
+#include "gtest/gtest.h"
 #include <cstdlib>
 #include <random>
 
@@ -192,4 +192,48 @@ std::vector<double> NeuralNetwork::sigmoid_prime(const std::vector<double>& x) {
         result[i] = t / ((1 + t) * (1 + t));
     }
     return result;
+}
+
+// Тест для оператора векторного вычитания
+TEST(VectorSubtractionTest, OperatorMinus) {
+    std::vector<double> vec1 = { 1.0, 2.0, 3.0 };
+    std::vector<double> vec2 = { 0.5, 1.0, 1.5 };
+    std::vector<double> result = vec1 - vec2;
+
+    // Проверяем размер результата
+    ASSERT_EQ(result.size(), 3);
+
+    // Проверяем значения вектора-результата
+    ASSERT_DOUBLE_EQ(result[0], 0.5);
+    ASSERT_DOUBLE_EQ(result[1], 1.0);
+    ASSERT_DOUBLE_EQ(result[2], 1.5);
+}
+
+// Тест для функции инициализации весов
+TEST(NeuralNetworkTest, WeightInitialization) {
+    NeuralNetwork n;
+
+    // Проверяем, что матрицы весов правильно инициализированы
+    ASSERT_EQ(n.get_weights1().rows(), HIDDEN_SIZE);
+    ASSERT_EQ(n.get_weights1().cols(), INPUT_SIZE + 1);
+    ASSERT_EQ(n.get_weights2().rows(), OUTPUT_SIZE);
+    ASSERT_EQ(n.get_weights2().cols(), HIDDEN_SIZE + 1);
+
+}
+
+// Тест для функции вычисления аккуратности
+TEST(NeuralNetworkTest, TestCalculateAccuracy) {
+    NeuralNetwork n;
+
+    // Загрузите тестовые изображения и метки в вашу нейронную сеть
+    Matrix<unsigned char> test_images(0, 0);
+    Matrix<unsigned char> test_labels(0, 0);
+    load_test_data(test_images, test_labels); // Замените на вашу функцию загрузки тестовых данных
+
+    // Вычислите аккуратность на тестовых данных
+    double accuracy = n.calculate_accuracy(test_images, test_labels);
+
+    // Проверьте, что аккуратность находится в ожидаемом диапазоне [0, 1]
+    ASSERT_GE(accuracy, 0.0);
+    ASSERT_LE(accuracy, 1.0);
 }

@@ -5,6 +5,7 @@
 #include <vector>
 #include <iostream>
 #include <fstream>
+#include "gtest/gtest.h"
 
 void debug(Example e) {
     static std::string shades = " .:-=+*#%@";
