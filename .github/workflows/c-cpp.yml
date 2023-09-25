@@ -2,9 +2,9 @@ name: C/C++ CI
 
 on:
   push:
-    branches: [ "master" ]
+    branches: [ "main" ]
   pull_request:
-    branches: [ "master" ]
+    branches: [ "main" ]
 
 jobs:
   build:
@@ -13,6 +13,9 @@ jobs:
 
     steps:
     - uses: actions/checkout@v3
+    - name: installation
+      run: sudo apt install -y googletest libgtest-dev build-essential gcovr
     - name: make
       run: make
-
+    - name: execute
+      run: ./program.out
