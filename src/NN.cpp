@@ -182,7 +182,7 @@ unsigned int NeuralNetwork::compute(const Example& e) {
 std::vector<double> NeuralNetwork::sigmoid(const std::vector<double>& x) {
     std::vector<double> result(x.size());
     for (unsigned int i = 0; i < x.size(); i++)
-        result[i] =  (sqrt(pow(x[i], 2) + 1) - 1) / 2 + x[i];
+        result[i] = 1 / (1 + exp(-x[i]));
     return result;
 }
 
