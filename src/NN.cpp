@@ -194,3 +194,19 @@ std::vector<double> NeuralNetwork::sigmoid_prime(const std::vector<double>& x) {
     }
     return result;
 }
+
+std::vector<double> sigmoid(const std::vector<double>& x) {
+    std::vector<double> result(x.size());
+    for (unsigned int i = 0; i < x.size(); i++)
+        result[i] = 1 / (1 + exp(-x[i]));
+    return result;
+}
+
+std::vector<double> sigmoid_prime(const std::vector<double>& x) {
+    std::vector<double> result(x.size());
+    for (unsigned int i = 0; i < result.size(); i++) {
+        const double t = exp(x[i]);
+        result[i] = t / ((1 + t) * (1 + t));
+    }
+    return result;
+}

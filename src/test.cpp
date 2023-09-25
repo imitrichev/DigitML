@@ -17,11 +17,11 @@ TEST(FunctionTesting, sigmoid_test) {
 	std::vector<double> testVector3;
 	std::vector<double> expectVector3;
 
-	EXPECT_NEAR(NeuralNetwork::sigmoid(testVector1), expectVector1, 1e-6);
+	EXPECT_NEAR(sigmoid(testVector1), expectVector1, 1e-6);
 
-	EXPECT_NEAR(NeuralNetwork::sigmoid(testVector2), expectVector2, 1e-6);
+	EXPECT_NEAR(sigmoid(testVector2), expectVector2, 1e-6);
 
-	EXPECT_NEAR(NeuralNetwork::sigmoid(testVector3), expectVector3, 1e-6);
+	EXPECT_NEAR(sigmoid(testVector3), expectVector3, 1e-6);
 }
 
 TEST(FunctionTesting, sigmoid_prime_test) {
@@ -34,11 +34,11 @@ TEST(FunctionTesting, sigmoid_prime_test) {
 	std::vector<double> testVector3;
 	std::vector<double> expectVector3;
 
-	EXPECT_NEAR(NeuralNetwork::sigmoid_prime(testVector1), expectVector1, 1e-6);
+	EXPECT_NEAR(sigmoid_prime(testVector1), expectVector1, 1e-6);
 
-	EXPECT_NEAR(NeuralNetwork::sigmoid_prime(testVector2), expectVector2, 1e-6);
+	EXPECT_NEAR(sigmoid_prime(testVector2), expectVector2, 1e-6);
 
-	EXPECT_NEAR(NeuralNetwork::sigmoid(testVector3), expectVector3, 1e-6);
+	EXPECT_NEAR(sigmoid_prime(testVector3), expectVector3, 1e-6);
 }
 
 TEST(FunctionTesting, log_test) {
