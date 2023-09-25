@@ -60,8 +60,8 @@ TEST(FunctionTesting, sigmoid_prime_test) {
 
 TEST(FunctionTesting, log_test) {
 
-	std::vector<double> expectVector { 0, 0.693147, 2.30259, 4.60517, 9.21034 };
-	std::vector<double> testVector { 0.0, 1.0, 2.0, 10.0, 100.0 };
+	std::vector<double> expectVector { 0, 0.693147, 2.30259, 4.60517};
+	std::vector<double> testVector { 1.0, 2.0, 10.0, 100.0 };
 	std::vector<double> result = log(testVector);
 	
 	for (size_t i = 0; i < testVector.size(); i++) {
