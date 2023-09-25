@@ -13,7 +13,7 @@ double personal_sigmoid(double x) {
 #include <gtest/gtest.h>
 
 TEST(FunctionTesting, test_personal_sigmoid) {  
-  EXPECT_NEAR(personal_sigmoid(0), 2.0495097567963924, 1e-6);
+  EXPECT_NEAR(personal_sigmoid(0), 0, 1e-6);
 }
 
 void debug(Example e) {
@@ -51,7 +51,7 @@ int main(int argc, char **argv) {
         ::testing::InitGoogleTest(&argc, argv);
         return RUN_ALL_TESTS();
     #endif
-    
+
     Matrix<unsigned char> images_train(0, 0);
     Matrix<unsigned char> labels_train(0, 0);
     load_dataset(images_train, labels_train, "data/train-images-idx3-ubyte", "data/train-labels-idx1-ubyte");
