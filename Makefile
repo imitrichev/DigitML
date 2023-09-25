@@ -1,16 +1,5 @@
-:WARNINGS = -pedantic -Wall -Wextra -Wcast-align -Wcast-qual -Wformat=2\
- -Winit-self -Wmissing-declarations -Wredundant-decls -Wshadow\
- -Wstrict-overflow=5 -Wswitch-default -Wundef
+all:
+	g++ -std=c++17 -pthread -I/usr/include/gtest -L/usr/lib/x86_64-linux-gnu test.cpp -o program.out -lgtest -lpthread
 
-FLAGS = $(WARNINGS) -std=c++11
-
-SRC = src/main.cpp
-
-all: 
-	g++ $(FLAGS) -Ofast $(SRC) -I include -o main 
-	./main < input.txt
-
-debug:
-	g++ $(FLAGS) -DDEBUG $(SRC) -o main
-	./main < input.txt
-
+clean:
+	rm program.out
