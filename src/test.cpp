@@ -3,6 +3,7 @@
 #include "../lib/matrix.h"
 #include <vector>
 #include <iostream>
+#include <cassert>
 #include "gtest/gtest.h"
 
 
@@ -16,7 +17,7 @@ TEST(FunctionTesting, sigmoid_test) {
 	std::vector<double> testVector3;
 	std::vector<double> expectVector3;
 
-	EXPECT_NEAR(NeuralNetwork::sigmoid(testVector), expectVector, 1e-6);
+	EXPECT_NEAR(NeuralNetwork::sigmoid(testVector1), expectVector1, 1e-6);
 
 	EXPECT_NEAR(NeuralNetwork::sigmoid(testVector2), expectVector2, 1e-6);
 
