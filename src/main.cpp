@@ -79,13 +79,13 @@ int main() {
 
     printf("End To End Test");
     for (int i = 0; i <= 5; i++) {
-        printf("Test №" + i);
+        printf("Тест: %d\n", i);
         EndToEndTest();
     }
 
     printf("PreLu function test");
     for (int i = 0; i <= 5; i++) {
-        printf("Test №" + i);
+        printf("Тест: %d\n", i);
         n.testPreluFunction();
     }
     

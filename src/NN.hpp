@@ -41,7 +41,7 @@ class NeuralNetwork {
                 Matrix<double>& gradient_2,
                 double& cost);
 
-        void NeuralNetWork::testPreluFunction();
+        void testPreluFunction();
 
         unsigned int compute(const Example& e);
 };
