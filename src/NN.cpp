@@ -140,39 +140,18 @@ void NeuralNetwork::compute_gradients_and_cost(
     cost += lambda/(2*m) * regularizationCost;
 }
 
-void NeuralNetWork::testPreluFunction() {
-    double alpha = 0.01 * (rand() % 3);
-    printf("alpha: %d\n", alpha);
-    printf("positive");
-    for (size_t i = 0; i < 5; i++)
-    {
-        double x = 0.5 * (rand() % 10001);
-        double result = prelu(x, alpha);
-        printf("result: %d\n", result);
-    }
-    printf("negative");
-    for (size_t i = 0; i < 5; i++)
-    {
-        double x = -0.5 * (rand() % 10001);
-        double result = prelu(x, alpha);
-        printf("result: %d\n", result);
-    }
-
-}
 inline std::vector<double> NeuralNetwork::feed_forward(
         const std::vector<double>& input,
         const Matrix<double>& weights) {
 
+    #ifdef PReLU
         return PReLU(weights * input);
+    #else
+        return sigmoid(weights * input);
+    #endif
+
 }
 
-inline std::vector<double> NeuralNetwork::testing(
-    const std::vector<double>& input,
-    const Matrix<double>& weights,
-    double alpha) {
-
-    return PReLU(weights * input, alpha);
-}
 Matrix<double> NeuralNetwork::weight_init(double maxWeight, unsigned int rows, unsigned int cols){
     std::random_device rd;
     std::mt19937 e2(rd());
@@ -223,7 +202,7 @@ std::vector<double> NeuralNetwork::sigmoid_prime(const std::vector<double>& x) {
     return result;
 }
 
-double prelu(double x, double alpha = 1.2) {
+double NeuralNetwork::prelu(double x, double alpha = 1.2) {
 
     if (x >= 0) {
         return x;
