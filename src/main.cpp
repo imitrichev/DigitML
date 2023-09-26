@@ -82,6 +82,8 @@ TEST(FunctionTesting, testReLUNeg){
     ASSERT_EQ(ReLU(x3),right_x3);
 }
 
+#endif
+
 int main(int argc, char **argv) {
 
     #ifdef TESTS
