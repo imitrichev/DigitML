@@ -1,7 +1,6 @@
 
 #include <cstdlib>
 #include <random>
-#include <ctime>
 
 // TODO valarray?
 std::vector<double> operator-(
