@@ -84,7 +84,7 @@ TEST(FunctionTesting, testPReLUMix) {
 TEST(FunctionTesting, testPReLUNeg) {
     std::vector<double> x3 = { -2, -3, -4, -5, -10 };
     std::vector<double> right_x3 = { -2.4, -3.6, -4.8, -6, -12 };
-    ASSERT_NEAR(PReLU(x3), right_x3, 1e - 6);
+    ASSERT_NEAR(PReLU(x3), right_x3, 1e-6);
 }
 
 #endif
