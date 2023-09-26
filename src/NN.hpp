@@ -15,7 +15,7 @@ class NeuralNetwork {
         Matrix<double> weights1 = Matrix<double>(HIDDEN_SIZE, INPUT_SIZE),
                        weights2 = Matrix<double>(OUTPUT_SIZE, HIDDEN_SIZE);
 
-        double prelu(double x, double alpha = 1.2)
+        double prelu(double x, double alpha = 1.2);
         std::vector<double> sigmoid(const std::vector<double>& x);
         std::vector<double> sigmoid_prime(const std::vector<double>& x);
         std::vector<double> PReLU(const std::vector<double>& x);
