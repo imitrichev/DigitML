@@ -6,7 +6,6 @@ FLAGS = $(WARNINGS) -std=c++11
 
 SRC = src/main.cpp
 
-
 standart:
 	g++ $(FLAGS) -Ofast $(SRC) -I include -o main
 
