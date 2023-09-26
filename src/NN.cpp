@@ -29,8 +29,8 @@ void NeuralNetwork::train(
 
     for (unsigned int i = 0; i < iterations; ++i) {
       // Initialize the gradient matrices to 0
-      Matrix<double> gradient_1(weights1.rows(), weights1.cols(), 0.0);
-      Matrix<double> gradient_2(weights2.rows(), weights2.cols(), 0.0);
+      Matrix<double> gradient_1(weights1.rows(), weights1.cols(), -1.0);
+      Matrix<double> gradient_2(weights2.rows(), weights2.cols(), -1.0);
       double cost = 0.0;
 
 
@@ -141,7 +141,12 @@ void NeuralNetwork::compute_gradients_and_cost(
 inline std::vector<double> NeuralNetwork::feed_forward(
         const std::vector<double>& input,
         const Matrix<double>& weights) {
-    return sigmoid(weights * input);
+    //return softsign(weights * input);
+	#ifdef SOFTSIGN
+		return softsign(weights * input);
+	#else
+		return sigmoid(weights * input);
+	#endif
 }
 
 Matrix<double> NeuralNetwork::weight_init(double maxWeight, unsigned int rows, unsigned int cols){
@@ -192,4 +197,20 @@ std::vector<double> NeuralNetwork::sigmoid_prime(const std::vector<double>& x) {
         result[i] = t / ((1 + t) * (1 + t));
     }
     return result;
+}
+
+// Activation function-softsign
+std::vector<double> NeuralNetwork::softsign(const std::vector<double>& x) {
+    std::vector<double> result(x.size());
+    for (unsigned int i = 0; i < result.size(); i++) {
+        result[i] = x[i] / (1 + abs(x[i]));
+    }
+    return result;
+}
+
+double NeuralNetwork::max(double a, double b){
+	if(a >= b)
+		return a;
+        else
+		return b;
 }

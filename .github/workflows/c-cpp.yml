@@ -1,0 +1,29 @@
+name: C/C++ CI
+
+on:
+  push:
+    branches: [ "master" ]
+  pull_request:
+    branches: [ "master" ]
+
+jobs:
+  build:
+
+    runs-on: ubuntu-latest
+
+    steps:
+    - uses: actions/checkout@v3
+    - name: installation
+      run: sudo apt install -y googletest libgtest-dev build-essential gcovr
+    - name: comp tests
+      run: make test
+    - name: run_tests
+      run: ./main
+    - name: make activate function 
+      run: make
+    - name: run standart activate function
+      run: ./main
+    - name: make SOFTSIGN activate function
+      run: make SOFTSIGN
+    - name: run SOFTSIGN activate function
+      run: ./main
