@@ -68,7 +68,7 @@ TEST(FunctionTesting, testMax2){
 
 TEST(FunctionTesting, testLeakyReLUPositives){
     std::vector<double> x1 = {0.1, 0.5, 0.8, 0.02, 0.95};
-    x1_true = {0.1, 0.5, 0.8, 0.02, 0.95};
+    std::vector<double> x1_true = {0.1, 0.5, 0.8, 0.02, 0.95};
     ASSERT_EQ(LeakyReLU(x1),x1_true);
 }
 
