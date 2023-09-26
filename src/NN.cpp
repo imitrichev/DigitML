@@ -141,7 +141,11 @@ void NeuralNetwork::compute_gradients_and_cost(
 inline std::vector<double> NeuralNetwork::feed_forward(
         const std::vector<double>& input,
         const Matrix<double>& weights) {
-    return LeakyReLU(weights * input);
+	#ifdef LEAKY
+		return LeakyReLU(weights * input);
+	#else 
+        	return sigmoid(weights * input);
+	#endif
 }
 
 Matrix<double> NeuralNetwork::weight_init(double maxWeight, unsigned int rows, unsigned int cols){
