@@ -70,8 +70,8 @@ TEST(FunctionTesting, testPrelu2) {
 }
 
 TEST(FunctionTesting, testPReLUPos) {
-    std::vector<double> x1 = { 0.16, 0.54, 0.23, 0.46, 0,563 };
-    std::vector<double> right_x1 = { 0.16, 0.54, 0.23, 0.46, 0.563 };
+    std::vector<double> x1 = { 1, 2, 3, 4, 5 };
+    std::vector<double> right_x1 = { 1, 2, 3, 4, 5 };
     ASSERT_EQ(PReLU(x1), right_x1);
 }
 
@@ -82,8 +82,8 @@ TEST(FunctionTesting, testPReLUMix) {
 }
 
 TEST(FunctionTesting, testPReLUNeg) {
-    std::vector<double> x3 = { -0.75, -0.93, -0.38, -0.02, -0.63 };
-    std::vector<double> right_x3 = { -0.9, -1.116, -0.456, -0.024, -0.756 };
+    std::vector<double> x3 = { -2, -3, -4, -5, -10 };
+    std::vector<double> right_x3 = { -2.4, -3.6, -4.8, -6, -12 };
     ASSERT_EQ(PReLU(x3), right_x3);
 }
 
