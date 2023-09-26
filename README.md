@@ -1,5 +1,5 @@
+Likholat Polina KS-40 num 9 RReLU
 # DigitML
-
 Training a feed-forward neural network with gradient descent and back-propogation to recognize handwritten digits. 
 
 
