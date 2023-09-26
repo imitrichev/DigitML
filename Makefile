@@ -6,9 +6,18 @@ FLAGS = $(WARNINGS) -std=c++11
 
 SRC = src/main.cpp
 
-all: 
+standart:
 	g++ $(FLAGS) -Ofast $(SRC) -I include -o main
+
+ReLU:
+	g++ $(FLAGS) -DRELU -Ofast $(SRC) -I include -o main
+
+test:
+	g++ $(FLAGS) -DTESTS -Ofast $(SRC) -I include -o main
+
+all: 
+	standart
 
 debug:
 	g++ $(FLAGS) -DDEBUG $(SRC) -o main
-
+	./main
