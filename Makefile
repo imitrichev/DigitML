@@ -13,7 +13,7 @@ ReLU:
 	g++ $(FLAGS) -DRELU -Ofast $(SRC) -I include -o main
 
 test:
-	g++ $(FLAGS) -DTESTS -Ofast $(SRC) -I include -o main
+	g++ $(FLAGS) -DTESTS -Ofast $(SRC) -I include -o main -lgtest
 
 all: 
 	standart
