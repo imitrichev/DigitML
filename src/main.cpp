@@ -82,9 +82,14 @@ TEST(FunctionTesting, testPReLUMix) {
 }
 
 TEST(FunctionTesting, testPReLUNeg) {
-    std::vector<double> x3 = { -2, -3, -4, -5, -10 };
-    std::vector<double> right_x3 = { -2.4, -3.6, -4.8, -6, -12 };
-    ASSERT_NEAR(PReLU(x3), right_x3, 1e-6);
+    std::vector<double> x3 = { -0.75, -0.93, -0.38, -0.02, -0.63 };
+    std::vector<double> right_x3 = { -0.9, -1.116, -0.456, -0.024, -0.756 };
+
+    std::vector<double> result = PReLU(x3);
+
+    for (unsigned int i = 0; i < result.size(); i++) {
+        ASSERT_NEAR(result[i], right_x3[i], 1e-6); // Проверка с погрешностью 1e-6
+    }
 }
 
 #endif
