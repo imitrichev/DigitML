@@ -92,19 +92,19 @@ TEST(FunctionTesting, testMax2) {
 TEST(FunctionTesting, testReLUPos) {
     std::vector<double> x1 = { 0.13, 0.23, 0.33, 0.43, 0.53 };
     std::vector<double> right_x1 = { 0.13, 0.23, 0.33, 0.43, 0.53 };
-    ASSERT_EQ(ReLU(x1), right_x1);
+    ASSERT_EQ(PReLU(x1), right_x1);
 }
 
 TEST(FunctionTesting, testReLUMix) {
     std::vector<double> x2 = { 0.05, -0.45, -0.24, 0.01, -0.99 };
     std::vector<double> right_x2 = { 0.05, 0.0, 0.0, 0.01, 0.0 };
-    ASSERT_EQ(ReLU(x2), right_x2);
+    ASSERT_EQ(PReLU(x2), right_x2);
 }
 
 TEST(FunctionTesting, testReLUNeg) {
     std::vector<double> x3 = { -0.75, -0.93, -0.38, -0.02, -0.63 };
     std::vector<double> right_x3 = { 0.0, 0.0, 0.0, 0.0, 0.0 };
-    ASSERT_EQ(ReLU(x3), right_x3);
+    ASSERT_EQ(PReLU(x3), right_x3);
 }
 
 #endif
