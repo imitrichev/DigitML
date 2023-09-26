@@ -40,8 +40,8 @@ const double calculate_accuracy(const Matrix<unsigned char>& images, const Matri
 #ifdef TESTS
 #include "gtest/gtest.h"
 
-double prelu(double x, double alpha = 1.2) {
-
+double prelu(double x) {
+    double alpha = 1.2;
     if (x >= 0) {
         return x;
     }
@@ -56,7 +56,7 @@ std::vector<double> PReLU(const std::vector<double>& x) {
         result[i] = prelu(x[i]);
     }
     return result;
-
+}
 TEST(FunctionTesting, testMax1) {
     EXPECT_NEAR(max(0.37, 0.29), 0.37, 1e-6);
     EXPECT_NEAR(max(-0.52, -0.92), -0.52, 1e-6);

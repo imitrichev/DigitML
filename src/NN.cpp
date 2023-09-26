@@ -201,8 +201,8 @@ std::vector<double> NeuralNetwork::sigmoid_prime(const std::vector<double>& x) {
     return result;
 }
 
-double NeuralNetwork::prelu(double x, double alpha = 1.2) {
-
+double NeuralNetwork::prelu(double x) {
+    double alpha = 1.2;
     if (x >= 0) {
         return x;
     }
