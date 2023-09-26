@@ -58,26 +58,26 @@ std::vector<double> PReLU(const std::vector<double>& x) {
     return result;
 }
 TEST(FunctionTesting, testPrelu1) {
-    EXPECT_NEAR(prelu(0.29), 0.348, 1e-6);
+    EXPECT_NEAR(prelu(0.29), 0.29, 1e-6);
     EXPECT_NEAR(prelu(-0.92), -1.104, 1e-6);
-    EXPECT_NEAR(prelu(0.83), 0.996, 1e-6);
+    EXPECT_NEAR(prelu(0.83), 0.83, 1e-6);
 }
 
 TEST(FunctionTesting, testPrelu2) {
-    EXPECT_NEAR(prelu(0.01), 0.012, 1e-6);
+    EXPECT_NEAR(prelu(0.01), 0.01, 1e-6);
     EXPECT_NEAR(prelu(-0.01), -0.012, 1e-6);
     EXPECT_NEAR(prelu(0), 0.0, 1e-6);
 }
 
 TEST(FunctionTesting, testPReLUPos) {
     std::vector<double> x1 = { 0.16, 0.54, 0.23, 0.46, 0,563 };
-    std::vector<double> right_x1 = { 0.192, 0.648, 0.276, 0.552, 0.6756 };
+    std::vector<double> right_x1 = { 0.16, 0.54, 0.23, 0.46, 0.563 };
     ASSERT_EQ(PReLU(x1), right_x1);
 }
 
 TEST(FunctionTesting, testPReLUMix) {
     std::vector<double> x2 = { 0.05, -0.45, -0.24, 0.01, -0.99 };
-    std::vector<double> right_x2 = { 0.006, -0.54, -0.288, 0.12, -1.188 };
+    std::vector<double> right_x2 = { 0.05, -0.54, -0.288, 0.01, -1.188 };
     ASSERT_EQ(PReLU(x2), right_x2);
 }
 
