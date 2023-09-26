@@ -65,8 +65,8 @@ TEST(FunctionTesting, testPrelu1) {
 
 TEST(FunctionTesting, testPrelu2) {
     EXPECT_NEAR(prelu(0.01), 0.1, 1e-6);
-    EXPECT_NEAR(max(-0.01), 0.0, 1e-6);
-    EXPECT_NEAR(max(0), 0.0, 1e-6);
+    EXPECT_NEAR(prelu(-0.01), 0.0, 1e-6);
+    EXPECT_NEAR(prelu(0), 0.0, 1e-6);
 }
 
 TEST(FunctionTesting, testPReLUPos) {
