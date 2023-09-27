@@ -35,7 +35,52 @@ const double calculate_accuracy(const Matrix<unsigned char>& images, const Matri
   return accuracy;
 }
 
-int main() {
+double arctg(double x) {
+    return atan(x);
+}
+
+#ifdef TESTS
+#include <gtest/gtest.h>
+
+NeuralNetwork n;
+
+TEST(FunctionTesting, test_arctg1) {  
+  EXPECT_NEAR(arctg(-1), -0.785398, 1e-6);
+}
+
+TEST(FunctionTesting, test_arctg2) {  
+  EXPECT_EQ(arctg(0), 0);
+}
+
+//EXPECT_THAT(test1, ::testing::ContainerEq(test2));
+
+TEST(FunctionTesting, test_count_arctg) {  
+  std::vector<double> test = {-1, 0, 1};
+  EXPECT_EQ(n.arctg(test).size(), 3);
+}
+
+//TEST(FunctionTesting, test_vector_of_artcg) {
+//  std::vector<double> test1 = {-1, 0, 1};
+//  std::vector<double> test2 = {-0.785398, 0, 0.785398};
+  //EXPECT_EQ(n.arctg(test1), test2);
+  //EXPECT_THAT(n.arctg(test1), ::testing::Eq(test2));
+//  EXPECT_DOUBLE_EQ(n.arctg(test1), test2);
+//}
+
+TEST(FunctionTesting, test_empty_vector) {
+  std::vector<double> test = {};
+  EXPECT_EQ(n.arctg(test).size(), 0);
+}
+//EXPECT_NEAR(addend1(-1),-0.54030230586,1e-6);
+//EXPECT_NEAR(NeuralNetwork.arctg(test), new std::vector<double>{}, 1e-6);
+#endif
+
+int main(int argc, char **argv) {
+    #ifdef TEST
+        ::testing::InitGoogleTest(&argc, argv);
+        return RUN_ALL_TESTS();
+    #endif
+
     Matrix<unsigned char> images_train(0, 0);
     Matrix<unsigned char> labels_train(0, 0);
     load_dataset(images_train, labels_train, "data/train-images-idx3-ubyte", "data/train-labels-idx1-ubyte");
