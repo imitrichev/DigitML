@@ -4,6 +4,7 @@
 #include "../lib/matrix.h"
 #include <vector>
 #include <iostream>
+#include <ctime>
 
 void debug(Example e) {
     static std::string shades = " .:-=+*#%@";
@@ -35,7 +36,51 @@ const double calculate_accuracy(const Matrix<unsigned char>& images, const Matri
   return accuracy;
 }
 
-int main() {
+
+#ifdef TESTS
+#include "gtest/gtest.h"
+NeuralNetwork n;
+
+TEST(FunctionTesting, testPrelu1) {
+    EXPECT_NEAR(n.prelu(0.29), 0.29, 1e-6);
+    EXPECT_NEAR(n.prelu(-0.92), -1.104, 1e-6);
+    EXPECT_NEAR(n.prelu(0.83), 0.83, 1e-6);
+}
+
+TEST(FunctionTesting, testPrelu2) {
+    EXPECT_NEAR(n.prelu(0.01), 0.01, 1e-6);
+    EXPECT_NEAR(n.prelu(-0.01), -0.012, 1e-6);
+    EXPECT_NEAR(n.prelu(0), 0.0, 1e-6);
+}
+
+TEST(FunctionTesting, testPReLUPos) {
+    std::vector<double> x1 = { 1, 2, 3, 4, 5 };
+    std::vector<double> right_x1 = { 1, 2, 3, 4, 5 };
+    ASSERT_EQ(n.PReLU(x1), right_x1);
+}
+
+TEST(FunctionTesting, testPReLUMix) {
+    std::vector<double> x2 = { 0.05, -0.45, -0.24, 0.01, -0.99 };
+    std::vector<double> right_x2 = { 0.05, -0.54, -0.288, 0.01, -1.188 };
+    ASSERT_EQ(n.PReLU(x2), right_x2);
+}
+
+TEST(FunctionTesting, testPReLUNeg) {
+    std::vector<double> x3 = { -0.75, -0.93, -0.38, -0.02, -0.63 };
+    std::vector<double> right_x3 = { -0.9, -1.116, -0.456, -0.024, -0.756 };
+
+    std::vector<double> result = n.PReLU(x3);
+
+    for (unsigned int i = 0; i < result.size(); i++) {
+        ASSERT_NEAR(result[i], right_x3[i], 1e-6); // Проверка с погрешностью 1e-6
+    }
+}
+
+#endif
+
+
+int main(int argc, char** argv) {
+    srand(time(NULL));
     Matrix<unsigned char> images_train(0, 0);
     Matrix<unsigned char> labels_train(0, 0);
     load_dataset(images_train, labels_train, "data/train-images-idx3-ubyte", "data/train-labels-idx1-ubyte");
@@ -46,25 +91,6 @@ int main() {
 
     NeuralNetwork n;
 
-    // Tests to see that data was read in properly
-    /*for (int i = 0; i < 10; ++i) {
-        Example e;
-        for (int j = 0; j < 28*28; ++j) {
-            e.data[j] = images_train[i][j];
-        }
-        e.label = labels_train[i][0];
-        debug(e);
-        printf("Guess: %d\n", n.compute(e));
-    }
-    for (int i = 0; i < 10; ++i) {
-        Example e;
-        for (int j = 0; j < 28*28; ++j) {
-            e.data[j] = images_test[i][j];
-        }
-        e.label = labels_test[i][0];
-        debug(e);
-        printf("Guess: %d\n", n.compute(e));
-    }*/
     const unsigned int num_iterations = 5;
     n.train(num_iterations, images_train, labels_train);
 
@@ -74,5 +100,10 @@ int main() {
     printf("Accuracy on training data: %f\n", accuracy_train);
     printf("Accuracy on test data: %f\n", accuracy_test);
 
+    #ifdef TESTS
+        ::testing::InitGoogleTest(&argc, argv);
+        return RUN_ALL_TESTS();
+    #endif
+    
     return 0;
 }

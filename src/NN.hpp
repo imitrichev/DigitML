@@ -39,6 +39,9 @@ class NeuralNetwork {
                 Matrix<double>& gradient_1,
                 Matrix<double>& gradient_2,
                 double& cost);
+
+        double prelu(double x);
+        std::vector<double> PReLU(const std::vector<double>& x);
         unsigned int compute(const Example& e);
 };
 

@@ -71,6 +71,7 @@ void NeuralNetwork::compute_gradients_and_cost(
     const double lambda = 1.0;
 
     for (unsigned int i = 0; i < m; ++i) {
+ 
         std::vector<double> first_layer(images[i].begin(), images[i].end());
         // The bias value
         first_layer.insert(first_layer.begin(), 1.0);
@@ -141,7 +142,13 @@ void NeuralNetwork::compute_gradients_and_cost(
 inline std::vector<double> NeuralNetwork::feed_forward(
         const std::vector<double>& input,
         const Matrix<double>& weights) {
-    return sigmoid(weights * input);
+
+    #ifdef PReLU
+        return PReLU(weights * input);
+    #else
+        return sigmoid(weights * input);
+    #endif
+
 }
 
 Matrix<double> NeuralNetwork::weight_init(double maxWeight, unsigned int rows, unsigned int cols){
@@ -190,6 +197,24 @@ std::vector<double> NeuralNetwork::sigmoid_prime(const std::vector<double>& x) {
     for (unsigned int i = 0; i < result.size(); i++) {
         const double t = exp(x[i]);
         result[i] = t / ((1 + t) * (1 + t));
+    }
+    return result;
+}
+
+double NeuralNetwork::prelu(double x) {
+    double alpha = 1.2;
+    if (x >= 0) {
+        return x;
+    }
+    else {
+        return alpha * x;
+    }
+}
+
+std::vector<double> NeuralNetwork::PReLU(const std::vector<double>& x) {
+    std::vector<double> result(x.size());
+    for (unsigned int i = 0; i < result.size(); i++) {
+        result[i] = prelu(x[i]);
     }
     return result;
 }
