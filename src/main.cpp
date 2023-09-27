@@ -42,23 +42,21 @@ const double calculate_accuracy(const Matrix<unsigned char>& images, const Matri
 #include "gtest/gtest.h"
 
 
-TEST(FunctionTesting, test_hyper_tan_1) {
+TEST(FunctionTesting, test1_heaviside) {
   EXPECT_NEAR(NeuralNetwork::heaviside_impl(1.0), 1.0, 1e-6);
 }
-/*
-TEST(FunctionTesting, test_hyper_tan_2) {
-  EXPECT_NEAR(test_n.heaviside(1),0.76159416,1e-6);
+TEST(FunctionTesting, test2_heaviside) {
+   EXPECT_NEAR(NeuralNetwork::heaviside_impl(0.0), 0.0, 1e-6);
 }
-TEST(FunctionTesting, test_hyper_tan_3) {
-  EXPECT_NEAR(test_n.heaviside(2),0.96402758,1e-6);
+TEST(FunctionTesting, test3_heaviside) {
+   EXPECT_NEAR(NeuralNetwork::heaviside_impl(0.4), 0.0, 1e-6);
 }
-TEST(FunctionTesting, test_hyper_tan_4) {
-  EXPECT_NEAR(test_n.heaviside(3),0.99505475,1e-6);
+TEST(FunctionTesting, test4_heaviside) {
+   EXPECT_NEAR(NeuralNetwork::heaviside_impl(0.7), 1.0, 1e-6);
 }
-TEST(FunctionTesting, test_hyper_tan_5) {
-  EXPECT_NEAR(test_n.heaviside(4),0.99932930,1e-6);
+TEST(FunctionTesting, test5_heaviside) {
+   EXPECT_NEAR(NeuralNetwork::heaviside_impl(0.1), 0.0, 1e-6);
 }
-*/
 #endif
 
 
