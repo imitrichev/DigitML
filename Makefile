@@ -2,15 +2,15 @@
  -Winit-self -Wmissing-declarations -Wredundant-decls -Wshadow\
  -Wstrict-overflow=5 -Wswitch-default -Wundef
 
-FLAGS = $(WARNINGS) -std=c++11
+FLAGS = $(WARNINGS) -std=c++17
 
 SRC = src/main.cpp
 
+test:
+	g++ $(FLAGS) -DTEST -Ofast $(SRC) -I include -o main -lgtest 
 all: 
 	g++ $(FLAGS) -Ofast $(SRC) -I include -o main
-	./main
 
 debug:
 	g++ $(FLAGS) -DDEBUG $(SRC) -o main
-	./main
 

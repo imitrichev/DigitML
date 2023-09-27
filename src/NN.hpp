@@ -17,6 +17,7 @@ class NeuralNetwork {
 
         std::vector<double> sigmoid(const std::vector<double>& x);
         std::vector<double> sigmoid_prime(const std::vector<double>& x);
+	    std::vector<double> heaviside(const std::vector<double>& x);
 
 		Matrix<double> weight_init(double max_weight, unsigned int width, unsigned int height);
 
@@ -28,6 +29,7 @@ class NeuralNetwork {
         NeuralNetwork();
         NeuralNetwork(const NeuralNetwork& rhs) = default;
         virtual ~NeuralNetwork() = default;
+	    static double heaviside_impl(const double x);
 
         void train(
                 const unsigned int iterations,

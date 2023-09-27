@@ -1,0 +1,25 @@
+name: C/C++ CI
+
+on:
+  push:
+    branches: [ "heaviside_activation_function" ]
+  pull_request:
+    branches: [ "heaviside_activation_function" ]
+
+jobs:
+  build:
+
+    runs-on: ubuntu-latest
+
+    steps:
+    - uses: actions/checkout@v3
+    - name: installation
+      run: sudo apt install -y googletest libgtest-dev build-essential gcovr
+    - name: compill unit tests
+      run: make test
+    - name: run unit tests
+      run: ./main
+    - name: make
+      run: make all 
+    - name: run 
+      run: ./main
