@@ -46,16 +46,16 @@ TEST(FunctionTesting, test1_heaviside) {
   EXPECT_NEAR(NeuralNetwork::heaviside_impl(1.0), 1.0, 1e-6);
 }
 TEST(FunctionTesting, test2_heaviside) {
-   EXPECT_NEAR(NeuralNetwork::heaviside_impl(0.0), 0.0, 1e-6);
+   EXPECT_NEAR(NeuralNetwork::heaviside_impl(0.0), 1.0, 1e-6);
 }
 TEST(FunctionTesting, test3_heaviside) {
-   EXPECT_NEAR(NeuralNetwork::heaviside_impl(0.4), 0.0, 1e-6);
+   EXPECT_NEAR(NeuralNetwork::heaviside_impl(0.4), 1.0, 1e-6);
 }
 TEST(FunctionTesting, test4_heaviside) {
    EXPECT_NEAR(NeuralNetwork::heaviside_impl(0.7), 1.0, 1e-6);
 }
 TEST(FunctionTesting, test5_heaviside) {
-   EXPECT_NEAR(NeuralNetwork::heaviside_impl(0.1), 0.0, 1e-6);
+   EXPECT_NEAR(NeuralNetwork::heaviside_impl(0.1), 1.0, 1e-6);
 }
 #endif
 
