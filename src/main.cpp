@@ -39,53 +39,37 @@ const double calculate_accuracy(const Matrix<unsigned char>& images, const Matri
 
 #ifdef TESTS
 #include "gtest/gtest.h"
+NeuralNetwork n;
 
-double prelu(double x) {
-    double alpha = 1.2;
-    if (x >= 0) {
-        return x;
-    }
-    else {
-        return alpha * x;
-    }
-}
-
-std::vector<double> PReLU(const std::vector<double>& x) {
-    std::vector<double> result(x.size());
-    for (unsigned int i = 0; i < result.size(); i++) {
-        result[i] = prelu(x[i]);
-    }
-    return result;
-}
 TEST(FunctionTesting, testPrelu1) {
-    EXPECT_NEAR(prelu(0.29), 0.29, 1e-6);
-    EXPECT_NEAR(prelu(-0.92), -1.104, 1e-6);
-    EXPECT_NEAR(prelu(0.83), 0.83, 1e-6);
+    EXPECT_NEAR(n.prelu(0.29), 0.29, 1e-6);
+    EXPECT_NEAR(n.prelu(-0.92), -1.104, 1e-6);
+    EXPECT_NEAR(n.prelu(0.83), 0.83, 1e-6);
 }
 
 TEST(FunctionTesting, testPrelu2) {
-    EXPECT_NEAR(prelu(0.01), 0.01, 1e-6);
-    EXPECT_NEAR(prelu(-0.01), -0.012, 1e-6);
-    EXPECT_NEAR(prelu(0), 0.0, 1e-6);
+    EXPECT_NEAR(n.prelu(0.01), 0.01, 1e-6);
+    EXPECT_NEAR(n.prelu(-0.01), -0.012, 1e-6);
+    EXPECT_NEAR(n.prelu(0), 0.0, 1e-6);
 }
 
 TEST(FunctionTesting, testPReLUPos) {
     std::vector<double> x1 = { 1, 2, 3, 4, 5 };
     std::vector<double> right_x1 = { 1, 2, 3, 4, 5 };
-    ASSERT_EQ(PReLU(x1), right_x1);
+    ASSERT_EQ(n.PReLU(x1), right_x1);
 }
 
 TEST(FunctionTesting, testPReLUMix) {
     std::vector<double> x2 = { 0.05, -0.45, -0.24, 0.01, -0.99 };
     std::vector<double> right_x2 = { 0.05, -0.54, -0.288, 0.01, -1.188 };
-    ASSERT_EQ(PReLU(x2), right_x2);
+    ASSERT_EQ(n.PReLU(x2), right_x2);
 }
 
 TEST(FunctionTesting, testPReLUNeg) {
     std::vector<double> x3 = { -0.75, -0.93, -0.38, -0.02, -0.63 };
     std::vector<double> right_x3 = { -0.9, -1.116, -0.456, -0.024, -0.756 };
 
-    std::vector<double> result = PReLU(x3);
+    std::vector<double> result = n.PReLU(x3);
 
     for (unsigned int i = 0; i < result.size(); i++) {
         ASSERT_NEAR(result[i], right_x3[i], 1e-6); // Проверка с погрешностью 1e-6
