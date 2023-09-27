@@ -1,0 +1,20 @@
+name: C/C++ CI
+
+on:
+  push:
+    branches: [ "gimalova_ks40" ]
+  pull_request:
+    branches: [ "gimalova_ks40" ]
+
+jobs:
+  build:
+
+    runs-on: ubuntu-latest
+
+    steps:
+    - uses: actions/checkout@v3
+    - name: make
+      run: make
+    - name: run
+      run: ./main
+

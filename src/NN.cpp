@@ -14,7 +14,7 @@ std::vector<double> operator-(
     return result;
 }
 
-NeuralNetwork::NeuralNetwork() {
+NeuralNetwork::NeuralNetwork(const double a): alpha(a) {
     weights1 = weight_init(2.0, HIDDEN_SIZE, INPUT_SIZE + 1);
     weights2 = weight_init(2.0, OUTPUT_SIZE, HIDDEN_SIZE + 1);
 }
@@ -25,7 +25,7 @@ void NeuralNetwork::train(
         const Matrix<unsigned char>& images,
         const Matrix<unsigned char>& labels) {
     // The learning rate
-    const double alpha = 1.5;
+    // const double alpha = 1.5;
 
     for (unsigned int i = 0; i < iterations; ++i) {
       // Initialize the gradient matrices to 0
@@ -192,4 +192,8 @@ std::vector<double> NeuralNetwork::sigmoid_prime(const std::vector<double>& x) {
         result[i] = t / ((1 + t) * (1 + t));
     }
     return result;
+}
+double NeuralNetwork::get_alpha(void)
+{
+        return alpha;
 }
