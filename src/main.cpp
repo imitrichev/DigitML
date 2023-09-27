@@ -35,6 +35,36 @@ const double calculate_accuracy(const Matrix<unsigned char>& images, const Matri
   return accuracy;
 }
 
+//std::vector<double> heaviside(const std::vector<double>& x);
+
+// TESTS
+#ifdef TEST
+#include "gtest/gtest.h"
+NeuralNetwork test_n;
+
+
+TEST(FunctionTesting, test_hyper_tan_1) {
+  std::vector<double> vector_test = {0.4, 0.7, 0.9}
+  std::vector<double> vector_y = {0.0, 1.0, 1.0}
+  EXPECT_NEAR(test_n.heaviside(vector_test), vector_y, 1e-6);
+}
+TEST(FunctionTesting, test_hyper_tan_2) {
+  EXPECT_NEAR(test_n.heaviside(1),0.76159416,1e-6);
+}
+TEST(FunctionTesting, test_hyper_tan_3) {
+  EXPECT_NEAR(test_n.heaviside(2),0.96402758,1e-6);
+}
+TEST(FunctionTesting, test_hyper_tan_4) {
+  EXPECT_NEAR(test_n.heaviside(3),0.99505475,1e-6);
+}
+TEST(FunctionTesting, test_hyper_tan_5) {
+  EXPECT_NEAR(test_n.heaviside(4),0.99932930,1e-6);
+}
+
+#endif
+
+
+
 int main() {
     Matrix<unsigned char> images_train(0, 0);
     Matrix<unsigned char> labels_train(0, 0);
